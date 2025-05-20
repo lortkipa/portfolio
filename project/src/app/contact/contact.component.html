@@ -1,0 +1,15 @@
+<section>
+  <h2>Contact Form</h2>
+  <form>
+    <input type="text" class="form-control" placeholder="Name" data-bs-theme="dark"
+    [(ngModel)]="name" name="name">
+    <input type="email" class="form-control" placeholder="Email" data-bs-theme="dark"
+    [(ngModel)]="email" name="email">
+    <input type="tel" class="form-control" placeholder="Telephone" data-bs-theme="dark"
+    [(ngModel)]="tel" name="tel">
+    <button type="button" class="btn btn-primary"
+      (click)="registerContact()"
+      [disabled]="!(name && email && tel)"
+      >Submit</button>
+  </form>
+</section>

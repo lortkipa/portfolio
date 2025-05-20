@@ -1,0 +1,187 @@
+.general {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+
+  div {
+
+    h1 {
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+    }
+
+    p {
+      color: rgb(255, 255, 255, 0.8);
+      font-weight: 600;
+    }
+
+    button {
+      width: 100%;
+      font-size: 20px;
+    }
+
+  }
+
+  img {
+    border-radius: 50%;
+
+    max-width: 240px;
+    width: 100%;
+
+    border: 4px solid white;
+  }
+
+}
+
+.abilities {
+
+  padding: 40px;
+
+  background-color: #1F2937;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  border-radius: 8px;
+
+  h2 {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .skill {
+    margin-bottom: 1.25rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+
+      p {
+        margin: 0;
+        color: white;
+        font-weight: 500;
+      }
+
+      .skill-name {
+        font-size: 1rem;
+      }
+
+      .skill-percentage {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+    }
+
+    .skill-bar {
+      width: 100%;
+      height: 8px;
+      background-color: #374151;
+      border-radius: 4px;
+      overflow: hidden;
+
+      .skill-progress {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        &.expert {
+          background: linear-gradient(90deg, #10B981 0%, #34D399 100%);
+        }
+
+        &.advanced {
+          background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 100%);
+        }
+
+        &.intermediate {
+          background: linear-gradient(90deg, #8B5CF6 0%, #A78BFA 100%);
+        }
+      }
+    }
+  }
+}
+
+.projects {
+  width: 100%;
+  padding: 40px;
+
+  background-color: #1F2937;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  border-radius: 8px;
+
+  h2 {
+
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+
+  }
+
+  .projectsCont {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .project {
+
+      width: 100%;
+      max-width: 400px;
+
+      padding: 20px;
+
+      background-color: #1A2027;
+
+      border-radius: 8px;
+
+      img {
+
+        width: 100%;
+        height: 200px;
+
+        object-fit: fit;
+
+        border-radius: 12px;
+
+        padding: 4px;
+
+      }
+
+      .projectBar {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        p {
+
+          color: white;
+          font-size: 20px;
+
+          margin-top: 8px;
+
+        }
+
+        button {
+
+          font-size: 16px;
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

@@ -1,0 +1,37 @@
+<section class="general">
+  <div>
+    <h1>Nikoloz Lortkipanidze</h1>
+    <p>
+    I am Frontend and Graphics Developer, <br>
+    Currently Studying in It Step Academy.
+    </p>
+    <button type="button" class="btn btn-success" routerLink="/contact">Contact Me</button>
+  </div>
+  <img src="image.webp">
+</section>
+
+<section class="abilities">
+  <h2>Abilities</h2>
+  <div class="skill" *ngFor="let skill of skills">
+    <div class="skill-header">
+      <p class="skill-name">{{skill.name}}</p>
+      <p class="skill-percentage">{{skill.percentage}}%</p>
+    </div>
+    <div class="skill-bar">
+      <div class="skill-progress {{getSkillLevel(skill.percentage)}}" [style.width.%]="skill.percentage"></div>
+    </div>
+  </div>
+</section>
+
+<section class="projects">
+  <h2>Projects</h2>
+  <div class="projectsCont">
+    <div class="project" *ngFor="let project of projects">
+      <img [src]="project.photo">
+      <div class="projectBar">
+        <p>{{project.name}}</p>
+        <a type="button" class="btn btn-primary" [href]="project.link">View Website</a>
+      </div>
+    </div>
+  </div>
+</section>

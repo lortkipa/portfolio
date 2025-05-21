@@ -17,7 +17,7 @@ export class HomeComponent {
 
   constructor(public language : LanguageService){}
 
-  names : string[] = [];
+  names : string[] = []
   infos : string[] = []
   contactMes : string[] = []
   abilities : string[] = []

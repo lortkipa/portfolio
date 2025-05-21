@@ -16,6 +16,7 @@ import {Language} from '../models/language';
 })
 export class ContactComponent {
 
+  link_github : string = "https://github.com/lortkipa/"
   link_linkedIn : string = "https://www.linkedin.com/in/nikoloz-lortkipanidze-2b4263329/"
   link_instagram : string = "https://www.instagram.com/nikolozlortki/"
   link_facebook : string = "https://www.facebook.com/nikas.channel/"

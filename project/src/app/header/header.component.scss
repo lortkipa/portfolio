@@ -1,4 +1,22 @@
 nav {
+
   position: fixed;
   width: 100%;
+
+  z-index: 100;
+
+  .flag {
+
+    height: 24px;
+    width: 40px;
+    margin-right: 20px;
+
+    object-fit: cover;
+
+    border-radius: 2px;
+
+    cursor: pointer;
+
+  }
+
 }

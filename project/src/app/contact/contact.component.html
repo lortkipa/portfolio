@@ -1,15 +1,20 @@
 <section>
-  <h2>Contact Form</h2>
+  <h2>{{contactForms[language.get()]}}</h2>
   <form>
-    <input type="text" class="form-control" placeholder="Name" data-bs-theme="dark"
-    [(ngModel)]="name" name="name">
-    <input type="email" class="form-control" placeholder="Email" data-bs-theme="dark"
-    [(ngModel)]="email" name="email">
-    <input type="tel" class="form-control" placeholder="Telephone" data-bs-theme="dark"
-    [(ngModel)]="tel" name="tel">
+    <input type="text" class="form-control" data-bs-theme="dark"
+    [(ngModel)]="name" name="name" [placeholder]="placeholder_name[language.get()]">
+    <input type="email" class="form-control" data-bs-theme="dark"
+    [(ngModel)]="email" name="email" [placeholder]="placeholder_email[language.get()]">
+    <input type="tel" class="form-control" data-bs-theme="dark"
+    [(ngModel)]="tel" name="tel" [placeholder]="placeholder_tel[language.get()]">
     <button type="button" class="btn btn-primary"
       (click)="registerContact()"
-      [disabled]="!(name && email && tel)"
-      >Submit</button>
+      [disabled]="!(name && email && tel && isValidEmail())"
+                          >{{submits[language.get()]}}</button>
   </form>
+  <div class="socials">
+    <a [href]="link_linkedIn"><img src="linkedIn.png"></a>
+    <a [href]="link_instagram"><img src="insta.png"></a>
+    <a [href]="link_facebook"><img src="fb.png"></a>
+  </div>
 </section>

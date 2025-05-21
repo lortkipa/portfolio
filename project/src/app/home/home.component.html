@@ -1,17 +1,14 @@
 <section class="general">
   <div>
-    <h1>Nikoloz Lortkipanidze</h1>
-    <p>
-    I am Frontend and Graphics Developer, <br>
-    Currently Studying in It Step Academy.
-    </p>
-    <button type="button" class="btn btn-success" routerLink="/contact">Contact Me</button>
+    <h1>{{names[language.get()]}}</h1>
+    <p [innerHTML]="infos[language.get()]"></p>
+    <button type="button" class="btn btn-success" routerLink="/contact">{{contactMes[language.get()]}}</button>
   </div>
   <img src="image.webp">
 </section>
 
 <section class="abilities">
-  <h2>Abilities</h2>
+  <h2>{{abilities[language.get()]}}</h2>
   <div class="skill" *ngFor="let skill of skills">
     <div class="skill-header">
       <p class="skill-name">{{skill.name}}</p>
@@ -24,13 +21,13 @@
 </section>
 
 <section class="projects">
-  <h2>Projects</h2>
+  <h2>{{projects[language.get()]}}</h2>
   <div class="projectsCont">
-    <div class="project" *ngFor="let project of projects">
+    <div class="project" *ngFor="let project of projectsArr">
       <img [src]="project.photo">
       <div class="projectBar">
         <p>{{project.name}}</p>
-        <a type="button" class="btn btn-primary" [href]="project.link">View Website</a>
+        <a type="button" class="btn btn-primary" [href]="project.link">{{viewWebs[language.get()]}}</a>
       </div>
     </div>
   </div>

@@ -17,7 +17,7 @@
     "@angular/platform-browser": "^19.2.13",
     "@angular/platform-browser-dynamic": "^19.2.13",
     "@angular/router": "^19.2.13",
-    "bird": "^0.7.0",
+    "bird": "^0.2.2",
     "birds": "^0.0.1",
     "bootstrap": "^5.3.6",
     "emailjs-com": "^3.2.0",

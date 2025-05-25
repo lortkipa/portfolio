@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
-import * as THREE from 'three';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import {color} from 'three/tsl';
 
 declare let VANTA: any;
 
@@ -11,10 +11,11 @@ declare let VANTA: any;
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  ngOnInit() {
+export class AppComponent implements AfterViewInit {
+
+  ngAfterViewInit() {
     VANTA.NET({
       el: "#vanta",
       mouseControls: true,
@@ -23,6 +24,10 @@ export class AppComponent {
       minHeight: 200.00,
       minWidth: 200.00,
       scale: 1.00,
-      scaleMobile: 1.00
-    })  }
+      scaleMobile: 1.00,
+      color: 0xff29,
+      backgroundColor: 0x0,
+      points: 10.00
+    });
+  }
 }

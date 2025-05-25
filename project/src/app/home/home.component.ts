@@ -5,6 +5,9 @@ import {CommonModule} from '@angular/common';
 import {project} from '../models/project';
 import {LanguageService} from '../services/language.service';
 import {Language} from '../models/language';
+import * as THREE from 'three';
+
+declare let VANTA : any;
 
 @Component({
   selector: 'app-home',
@@ -25,6 +28,7 @@ export class HomeComponent {
   viewWebs : string [] = []
 
   ngOnInit() {
+
     this.names[Language.English] = "Nikoloz Lortkipanidze"
     this.names[Language.Georgian] = "ნიკოლოზ ლორთქიფანიძე"
 

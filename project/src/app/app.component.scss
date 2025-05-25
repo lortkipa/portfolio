@@ -1,8 +1,23 @@
+#vanta {
+  position: fixed; // ✅ Makes it cover the entire screen
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+}
+
+header,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
 main {
   min-height: 100vh;
-  height: 100%;
-
-  background-color: rgb(12, 12, 12);
-
+  background-color: transparent; // Let Vanta show through
   padding: 60px 20px;
 }
+

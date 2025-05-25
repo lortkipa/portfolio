@@ -13,8 +13,7 @@ export class AlertService {
   success(message : string) {
     Swal.fire({
       title: message,
-      icon: "success",
-      draggable: true
+      icon: "success"
     });
   }
 

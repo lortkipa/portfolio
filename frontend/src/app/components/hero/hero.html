@@ -1,0 +1,38 @@
+<section id="about">
+  <div class="container">
+    <div class="hero-layout">
+
+      <div class="hero-text reveal">
+        <p class="greeting">Hello, I'm</p>
+        <h1>
+          <span class="name">{{globals.fullName()}}</span><br />
+          {{role()}}
+        </h1>
+        <p class="bio">{{bio()}}</p>
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact"  class="btn btn-outline">Get In Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="avatar-wrap">
+          <div class="avatar-card">
+            <div class="avatar-figure">
+              <div class="avatar-head"></div>
+              <div class="avatar-body"></div>
+            </div>
+          </div>
+
+          <div class="badge badge-1">
+            <span class="dot"></span> {{badge1()}}
+          </div>
+          <div class="badge badge-2">
+            {{badge2()}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

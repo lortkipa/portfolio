@@ -1,0 +1,93 @@
+/* =============================================
+       CSS CUSTOM PROPERTIES (Design Tokens)
+    ============================================= */
+:root {
+    --cream: #f7f4ee;
+    --cream-dark: #ede9df;
+    --ink: #1a1814;
+    --ink-muted: #5c5851;
+    --accent: #c8622a; /* warm terracotta */
+    --accent-lt: #f0ddd1;
+    --border: rgba(26, 24, 20, 0.1);
+    --radius: 12px;
+    --transition: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --shadow-sm: 0 2px 12px rgba(26, 24, 20, 0.07);
+    --shadow-md: 0 8px 32px rgba(26, 24, 20, 0.12);
+    --shadow-lg: 0 24px 64px rgba(26, 24, 20, 0.15);
+}
+
+/* =============================================
+       RESET & BASE
+    ============================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1100px;
+    margin-inline: auto;
+    padding-inline: 2rem;
+}
+
+.section-label {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.section-title {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.15;
+    color: var(--ink);
+}
+
+.section-title em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+/* Scroll-reveal animation base state */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

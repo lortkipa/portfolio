@@ -1,0 +1,21 @@
+<section id="skills">
+    <div class="container">
+
+        <div class="skills-header reveal">
+            <span class="section-label">Expertise</span>
+            <h2 class="section-title">Skills &amp; <em>Technologies</em></h2>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card reveal" *ngFor="let skill of skills(); let i = index;" [style.transition-delay]="i * 0.1+'s'">
+
+                <div class="skill-card-icon">{{ skill.icon }}</div>
+                <h3>{{ skill.title }}</h3>
+                <div class="skill-tags">
+                    <span class="tag" *ngFor="let tag of skill.tags">{{ tag.name }}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,62 @@
+<section id="contact">
+  <div class="container">
+    <div class="contact-layout">
+
+      <div class="contact-info reveal">
+        <span class="section-label">Let's Talk</span>
+        <h2 class="section-title">Get In <em>Touch</em></h2>
+        <p class="contact-tagline">
+          Whether you have a role in mind, a project to discuss, or just want
+          to say hello — my inbox is always open.
+        </p>
+        <div class="contact-detail">
+          <span class="icon">📧</span>
+          <span>alex.morgan@email.com</span>
+        </div>
+        <div class="contact-detail">
+          <span class="icon">📍</span>
+          <span>San Francisco, CA</span>
+        </div>
+        <div class="contact-detail">
+          <span class="icon">💼</span>
+          <a href="https://linkedin.com" target="_blank" class="accent-link">linkedin.com/in/alexmorgan</a>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:.1s">
+        <form class="contact-form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Full Name</label>
+              <input type="text" name="name" ngModel required placeholder="Jane Smith" />
+            </div>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input type="email" name="email" ngModel required email placeholder="jane@example.com" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" ngModel placeholder="What's this about?" />
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea name="message" ngModel required placeholder="Tell me about your project..."></textarea>
+          </div>
+
+          <div class="form-success" [class.show]="showSuccess()">
+            ✅ &nbsp;Thanks for reaching out! I'll get back to you soon.
+          </div>
+
+          <button type="submit" class="btn-submit" [disabled]="isSubmitting() || contactForm.invalid">
+            {{ isSubmitting() ? 'Sending...' : 'Send Message →' }}
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

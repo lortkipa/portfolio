@@ -1,0 +1,22 @@
+[
+  {
+    "ContainingType": "Portfolio.API.Controllers.ProjectController",
+    "Method": "GetAll",
+    "RelativePath": "api/Project/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Portfolio.API.Controllers.SkillController",
+    "Method": "GetAll",
+    "RelativePath": "api/Skill/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,17 @@
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\bin\Debug\net10.0\Portfolio.Service.deps.json
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\bin\Debug\net10.0\Portfolio.Service.dll
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\bin\Debug\net10.0\Portfolio.Service.pdb
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\Portfolio.Service.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\Portfolio.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\Portfolio.Service.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\Portfolio.Service.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\Portfolio.Service.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\Portfolio.Service.dll
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\refint\Portfolio.Service.dll
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\Portfolio.Service.pdb
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\ref\Portfolio.Service.dll
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\bin\Debug\net10.0\Portfolio.Dal.dll
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\bin\Debug\net10.0\Portfolio.Data.dll
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\bin\Debug\net10.0\Portfolio.Dal.pdb
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\bin\Debug\net10.0\Portfolio.Data.pdb
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\Portfoli.36701EAC.Up2Date

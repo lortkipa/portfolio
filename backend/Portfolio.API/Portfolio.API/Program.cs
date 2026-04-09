@@ -39,6 +39,8 @@ namespace Portfolio.API
             builder.Services.AddScoped<ISkillTagRepository, SkillTagRepository>();
             builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
             builder.Services.AddScoped<IProjectTagRepository, ProjectTagRepository>();
+            builder.Services.AddScoped<IContactRepository, ContactRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             // Add services to the container
             builder.Services.AddScoped<ITagService, TagService>();
@@ -46,6 +48,8 @@ namespace Portfolio.API
             builder.Services.AddScoped<ISkillTagService, SkillTagService>();
             builder.Services.AddScoped<IProjectService, ProjectService>();
             builder.Services.AddScoped<IProjectTagService, ProjectTagService>();
+            builder.Services.AddScoped<IContactService, ContactService>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

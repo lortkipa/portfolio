@@ -12,3 +12,4 @@ C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.Data\obj\Debug\net10.
 C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.Data\obj\Debug\net10.0\Portfolio.Data.pdb
 C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.Data\obj\Debug\net10.0\Portfolio.Data.genruntimeconfig.cache
 C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.Data\obj\Debug\net10.0\ref\Portfolio.Data.dll
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.Data\obj\Debug\net10.0\Portfolio.Data.sourcelink.json

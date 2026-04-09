@@ -3,10 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\Migrations\\20260408214214_v1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\Migrations\\20260409071738_v1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7520CC35-3FEA-4074-85C8-F59C82953513}|..\\Portfolio.Data\\Portfolio.Data.csproj|c:\\users\\administrator\\desktop\\portfolio\\backend\\portfolio.data\\portfoliocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\Migrations\\20260409071710_v4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDF8E897-9209-9E5A-82C6-7783AD9B9722}|Portfolio.API\\Portfolio.API.csproj|c:\\users\\administrator\\desktop\\portfolio\\backend\\portfolio.api\\portfolio.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDF8E897-9209-9E5A-82C6-7783AD9B9722}|Portfolio.API\\Portfolio.API.csproj|solutionrelative:portfolio.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,27 +25,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "20260408214214_v1.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\Migrations\\20260408214214_v1.cs",
-              "RelativeDocumentMoniker": "..\\Portfolio.Data\\Migrations\\20260408214214_v1.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\Migrations\\20260408214214_v1.cs",
-              "RelativeToolTip": "..\\Portfolio.Data\\Migrations\\20260408214214_v1.cs",
+              "Title": "20260409071738_v1.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\Migrations\\20260409071738_v1.cs",
+              "RelativeDocumentMoniker": "..\\Portfolio.Data\\Migrations\\20260409071738_v1.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\Migrations\\20260409071738_v1.cs",
+              "RelativeToolTip": "..\\Portfolio.Data\\Migrations\\20260409071738_v1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-08T21:42:14.656Z",
+              "WhenOpened": "2026-04-09T07:17:38.746Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PortfolioContext.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\PortfolioContext.cs",
-              "RelativeDocumentMoniker": "..\\Portfolio.Data\\PortfolioContext.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\PortfolioContext.cs",
-              "RelativeToolTip": "..\\Portfolio.Data\\PortfolioContext.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAYwCYAAAAuAAAAAAAAAA==",
+              "Title": "20260409071710_v4.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\Migrations\\20260409071710_v4.cs",
+              "RelativeDocumentMoniker": "..\\Portfolio.Data\\Migrations\\20260409071710_v4.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.Data\\Migrations\\20260409071710_v4.cs",
+              "RelativeToolTip": "..\\Portfolio.Data\\Migrations\\20260409071710_v4.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-08T21:21:30.819Z",
+              "WhenOpened": "2026-04-09T07:17:10.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\Portfolio.API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Portfolio.API\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\Portfolio.API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Portfolio.API\\Controllers\\UserController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCcAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-09T07:16:21.062Z",
               "EditorCaption": ""
             }
           ]

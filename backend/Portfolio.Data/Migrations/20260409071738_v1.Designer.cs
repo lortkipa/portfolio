@@ -11,8 +11,8 @@ using Portfolio.Data;
 namespace Portfolio.Data.Migrations
 {
     [DbContext(typeof(PortfolioContext))]
-    [Migration("20260408213655_v9")]
-    partial class v9
+    [Migration("20260409071738_v1")]
+    partial class v1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,53 @@ namespace Portfolio.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Portfolio.Data.Entities.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
+
+                    b.Property<string>("GithubLink")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("LinkedinLink")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "nikusha191208@gmail.com",
+                            GithubLink = "https://github.com/lortkipa",
+                            LinkedinLink = "https://www.linkedin.com/in/nikoloz-lortkipanidze-2b4263329/",
+                            Location = "Tbilisi, Georgia",
+                            PhoneNumber = "+995 575 78 03 23"
+                        });
+                });
 
             modelBuilder.Entity("Portfolio.Data.Entities.Project", b =>
                 {
@@ -118,108 +165,72 @@ namespace Portfolio.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ProjectId = 2,
+                            ProjectId = 1,
                             TagId = 20
                         },
                         new
                         {
                             Id = 2,
-                            ProjectId = 2,
-                            TagId = 8
+                            ProjectId = 1,
+                            TagId = 1
                         },
                         new
                         {
                             Id = 3,
-                            ProjectId = 2,
-                            TagId = 7
+                            ProjectId = 1,
+                            TagId = 2
                         },
                         new
                         {
                             Id = 4,
-                            ProjectId = 2,
-                            TagId = 6
+                            ProjectId = 1,
+                            TagId = 3
                         },
                         new
                         {
                             Id = 5,
-                            ProjectId = 2,
-                            TagId = 1
+                            ProjectId = 1,
+                            TagId = 4
                         },
                         new
                         {
                             Id = 6,
                             ProjectId = 2,
-                            TagId = 2
+                            TagId = 20
                         },
                         new
                         {
                             Id = 7,
                             ProjectId = 2,
-                            TagId = 3
+                            TagId = 1
                         },
                         new
                         {
                             Id = 8,
                             ProjectId = 2,
-                            TagId = 4
+                            TagId = 2
                         },
                         new
                         {
                             Id = 9,
                             ProjectId = 2,
-                            TagId = 20
+                            TagId = 3
                         },
                         new
                         {
                             Id = 10,
                             ProjectId = 2,
-                            TagId = 8
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ProjectId = 2,
-                            TagId = 7
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ProjectId = 2,
-                            TagId = 6
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ProjectId = 2,
-                            TagId = 1
-                        },
-                        new
-                        {
-                            Id = 14,
-                            ProjectId = 2,
-                            TagId = 2
-                        },
-                        new
-                        {
-                            Id = 15,
-                            ProjectId = 2,
-                            TagId = 3
-                        },
-                        new
-                        {
-                            Id = 16,
-                            ProjectId = 2,
                             TagId = 4
                         },
                         new
                         {
-                            Id = 17,
+                            Id = 11,
                             ProjectId = 3,
                             TagId = 22
                         },
                         new
                         {
-                            Id = 18,
+                            Id = 12,
                             ProjectId = 3,
                             TagId = 23
                         });
@@ -346,102 +357,108 @@ namespace Portfolio.Data.Migrations
                         new
                         {
                             Id = 6,
-                            SkillId = 2,
-                            TagId = 20
+                            SkillId = 1,
+                            TagId = 22
                         },
                         new
                         {
                             Id = 7,
                             SkillId = 2,
-                            TagId = 19
+                            TagId = 20
                         },
                         new
                         {
                             Id = 8,
                             SkillId = 2,
-                            TagId = 21
+                            TagId = 19
                         },
                         new
                         {
                             Id = 9,
-                            SkillId = 3,
-                            TagId = 2
+                            SkillId = 2,
+                            TagId = 21
                         },
                         new
                         {
                             Id = 10,
                             SkillId = 3,
-                            TagId = 3
+                            TagId = 2
                         },
                         new
                         {
                             Id = 11,
                             SkillId = 3,
-                            TagId = 9
+                            TagId = 3
                         },
                         new
                         {
                             Id = 12,
-                            SkillId = 4,
-                            TagId = 4
+                            SkillId = 3,
+                            TagId = 9
                         },
                         new
                         {
                             Id = 13,
                             SkillId = 4,
-                            TagId = 10
+                            TagId = 4
                         },
                         new
                         {
                             Id = 14,
                             SkillId = 4,
-                            TagId = 11
+                            TagId = 10
                         },
                         new
                         {
                             Id = 15,
-                            SkillId = 5,
-                            TagId = 12
+                            SkillId = 4,
+                            TagId = 11
                         },
                         new
                         {
                             Id = 16,
                             SkillId = 5,
-                            TagId = 13
+                            TagId = 12
                         },
                         new
                         {
                             Id = 17,
                             SkillId = 5,
-                            TagId = 14
+                            TagId = 13
                         },
                         new
                         {
                             Id = 18,
                             SkillId = 5,
-                            TagId = 15
+                            TagId = 14
                         },
                         new
                         {
                             Id = 19,
                             SkillId = 5,
-                            TagId = 13
+                            TagId = 15
                         },
                         new
                         {
                             Id = 20,
-                            SkillId = 6,
-                            TagId = 16
+                            SkillId = 5,
+                            TagId = 13
                         },
                         new
                         {
                             Id = 21,
                             SkillId = 6,
-                            TagId = 17
+                            TagId = 16
                         },
                         new
                         {
                             Id = 22,
+                            SkillId = 6,
+                            TagId = 17
+                        },
+                        new
+                        {
+                            Id = 23,
                             SkillId = 6,
                             TagId = 18
                         });
@@ -476,12 +493,12 @@ namespace Portfolio.Data.Migrations
                         new
                         {
                             Id = 2,
-                            Name = "ASP.NET Core"
+                            Name = "ASP.NET"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Entity Framework Core"
+                            Name = "Entity Framework"
                         },
                         new
                         {
@@ -585,6 +602,38 @@ namespace Portfolio.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Portfolio.Data.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ContactId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ContactId")
+                        .IsUnique();
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ContactId = 1,
+                            FullName = "Nikoloz Lortkipanidze"
+                        });
+                });
+
             modelBuilder.Entity("Portfolio.Data.Entities.ProjectTag", b =>
                 {
                     b.HasOne("Portfolio.Data.Entities.Project", "Project")
@@ -621,6 +670,22 @@ namespace Portfolio.Data.Migrations
                     b.Navigation("Skill");
 
                     b.Navigation("Tag");
+                });
+
+            modelBuilder.Entity("Portfolio.Data.Entities.User", b =>
+                {
+                    b.HasOne("Portfolio.Data.Entities.Contact", "Contact")
+                        .WithOne("User")
+                        .HasForeignKey("Portfolio.Data.Entities.User", "ContactId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Contact");
+                });
+
+            modelBuilder.Entity("Portfolio.Data.Entities.Contact", b =>
+                {
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Portfolio.Data.Entities.Project", b =>

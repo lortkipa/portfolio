@@ -11,15 +11,23 @@
         </p>
         <div class="contact-detail">
           <span class="icon">📧</span>
-          <span>alex.morgan@email.com</span>
+          <span>{{profile()?.contact?.email}}</span>
+        </div>
+        <div class="contact-detail">
+          <span class="icon">📞</span>
+          <span>{{profile()?.contact?.phoneNumber}}</span>
         </div>
         <div class="contact-detail">
           <span class="icon">📍</span>
-          <span>San Francisco, CA</span>
+          <span>{{profile()?.contact?.location}}</span>
         </div>
         <div class="contact-detail">
           <span class="icon">💼</span>
-          <a href="https://linkedin.com" target="_blank" class="accent-link">linkedin.com/in/alexmorgan</a>
+          <a [href]="profile()?.contact?.linkedinLink" class="accent-link">{{profile()?.contact?.linkedinLink}}</a>
+        </div>
+        <div class="contact-detail">
+          <span class="icon">🐙</span>
+          <a [href]="profile()?.contact?.githubLink" class="accent-link">{{profile()?.contact?.githubLink}}</a>
         </div>
       </div>
 

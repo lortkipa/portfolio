@@ -15,3 +15,4 @@ C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service
 C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\bin\Debug\net10.0\Portfolio.Dal.pdb
 C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\bin\Debug\net10.0\Portfolio.Data.pdb
 C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\Portfoli.36701EAC.Up2Date
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.Service\obj\Debug\net10.0\Portfolio.Service.sourcelink.json

@@ -167,3 +167,4 @@ C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.API\bin
 C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Administrator\Desktop\portfolio\backend\Portfolio.API\Portfolio.API\obj\Debug\net10.0\Portfolio.API.sourcelink.json

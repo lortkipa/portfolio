@@ -16,6 +16,8 @@ namespace Portfolio.Data
         public DbSet<SkillTag> SkillTags { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectTag> ProjectTags { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public PortfolioContext()
         {
@@ -139,6 +141,25 @@ namespace Portfolio.Data
                 new ProjectTag { Id = 10, ProjectId = 2, TagId = 4 },
                 new ProjectTag { Id = 11, ProjectId = 3, TagId = 22 },
                 new ProjectTag { Id = 12, ProjectId = 3, TagId = 23 }
+            );
+            modelBuilder.Entity<Contact>().HasData(
+                new Contact 
+                {
+                    Id = 1,
+                    Email = "nikusha191208@gmail.com",
+                    Location = "Tbilisi, Georgia",
+                    PhoneNumber = "+995 575 78 03 23",
+                    GithubLink = "https://github.com/lortkipa",
+                    LinkedinLink = "https://www.linkedin.com/in/nikoloz-lortkipanidze-2b4263329/"
+                }
+            );
+            modelBuilder.Entity<User>().HasData(
+                new User 
+                {
+                    Id = 1,
+                    ContactId = 1,
+                    FullName = "Nikoloz Lortkipanidze"
+                }
             );
         }
     }

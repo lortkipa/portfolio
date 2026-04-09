@@ -7,11 +7,28 @@
 namespace Portfolio.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class v9 : Migration
+    public partial class v1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Contacts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(type: "nvarchar(254)", maxLength: 254, nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    GithubLink = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    LinkedinLink = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contacts", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
@@ -55,6 +72,26 @@ namespace Portfolio.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tags", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ContactId = table.Column<int>(type: "int", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Contacts_ContactId",
+                        column: x => x.ContactId,
+                        principalTable: "Contacts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -110,6 +147,11 @@ namespace Portfolio.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Contacts",
+                columns: new[] { "Id", "Email", "GithubLink", "LinkedinLink", "Location", "PhoneNumber" },
+                values: new object[] { 1, "nikusha191208@gmail.com", "https://github.com/lortkipa", "https://www.linkedin.com/in/nikoloz-lortkipanidze-2b4263329/", "Tbilisi, Georgia", "+995 575 78 03 23" });
+
+            migrationBuilder.InsertData(
                 table: "Projects",
                 columns: new[] { "Id", "Desc", "Icon", "Theme", "Title", "demoLink", "githubLink" },
                 values: new object[,]
@@ -138,8 +180,8 @@ namespace Portfolio.Data.Migrations
                 values: new object[,]
                 {
                     { 1, "C#" },
-                    { 2, "ASP.NET Core" },
-                    { 3, "Entity Framework Core" },
+                    { 2, "ASP.NET" },
+                    { 3, "Entity Framework" },
                     { 4, "MySQL" },
                     { 5, "JavaScript" },
                     { 6, "TypeScript" },
@@ -167,24 +209,18 @@ namespace Portfolio.Data.Migrations
                 columns: new[] { "Id", "ProjectId", "TagId" },
                 values: new object[,]
                 {
-                    { 1, 2, 20 },
-                    { 2, 2, 8 },
-                    { 3, 2, 7 },
-                    { 4, 2, 6 },
-                    { 5, 2, 1 },
-                    { 6, 2, 2 },
-                    { 7, 2, 3 },
-                    { 8, 2, 4 },
-                    { 9, 2, 20 },
-                    { 10, 2, 8 },
-                    { 11, 2, 7 },
-                    { 12, 2, 6 },
-                    { 13, 2, 1 },
-                    { 14, 2, 2 },
-                    { 15, 2, 3 },
-                    { 16, 2, 4 },
-                    { 17, 3, 22 },
-                    { 18, 3, 23 }
+                    { 1, 1, 20 },
+                    { 2, 1, 1 },
+                    { 3, 1, 2 },
+                    { 4, 1, 3 },
+                    { 5, 1, 4 },
+                    { 6, 2, 20 },
+                    { 7, 2, 1 },
+                    { 8, 2, 2 },
+                    { 9, 2, 3 },
+                    { 10, 2, 4 },
+                    { 11, 3, 22 },
+                    { 12, 3, 23 }
                 });
 
             migrationBuilder.InsertData(
@@ -197,24 +233,30 @@ namespace Portfolio.Data.Migrations
                     { 3, 1, 6 },
                     { 4, 1, 7 },
                     { 5, 1, 8 },
-                    { 6, 2, 20 },
-                    { 7, 2, 19 },
-                    { 8, 2, 21 },
-                    { 9, 3, 2 },
-                    { 10, 3, 3 },
-                    { 11, 3, 9 },
-                    { 12, 4, 4 },
-                    { 13, 4, 10 },
-                    { 14, 4, 11 },
-                    { 15, 5, 12 },
-                    { 16, 5, 13 },
-                    { 17, 5, 14 },
-                    { 18, 5, 15 },
-                    { 19, 5, 13 },
-                    { 20, 6, 16 },
-                    { 21, 6, 17 },
-                    { 22, 6, 18 }
+                    { 6, 1, 22 },
+                    { 7, 2, 20 },
+                    { 8, 2, 19 },
+                    { 9, 2, 21 },
+                    { 10, 3, 2 },
+                    { 11, 3, 3 },
+                    { 12, 3, 9 },
+                    { 13, 4, 4 },
+                    { 14, 4, 10 },
+                    { 15, 4, 11 },
+                    { 16, 5, 12 },
+                    { 17, 5, 13 },
+                    { 18, 5, 14 },
+                    { 19, 5, 15 },
+                    { 20, 5, 13 },
+                    { 21, 6, 16 },
+                    { 22, 6, 17 },
+                    { 23, 6, 18 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "ContactId", "FullName" },
+                values: new object[] { 1, 1, "Nikoloz Lortkipanidze" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectTags_ProjectId",
@@ -247,6 +289,12 @@ namespace Portfolio.Data.Migrations
                 table: "Tags",
                 column: "Name",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_ContactId",
+                table: "Users",
+                column: "ContactId",
+                unique: true);
         }
 
         /// <inheritdoc />
@@ -259,6 +307,9 @@ namespace Portfolio.Data.Migrations
                 name: "SkillTags");
 
             migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
                 name: "Projects");
 
             migrationBuilder.DropTable(
@@ -266,6 +317,9 @@ namespace Portfolio.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tags");
+
+            migrationBuilder.DropTable(
+                name: "Contacts");
         }
     }
 }

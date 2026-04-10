@@ -18,6 +18,9 @@ namespace Portfolio.Data.Configurations
             builder.Property(u => u.FullName)
                 .IsRequired()
                 .HasMaxLength(25);
+            builder.Property(u => u.PasswordHash)
+                .IsRequired()
+                .HasMaxLength(100);
 
             // User => Contact
             builder.HasOne(u => u.Contact)

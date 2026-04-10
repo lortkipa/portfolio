@@ -1,4 +1,5 @@
-﻿using Portfolio.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Portfolio.Data;
 using Portfolio.Data.Entities;
 using Portfolio.Data.Infastructure;
 using System;
@@ -9,6 +10,7 @@ namespace Portfolio.Dal.Repositories
 {
     public interface IUserRepository : IBaseRepository<User>
     {
+        Task<User> GetByEmailAsync(string email);
     }
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
@@ -16,6 +18,13 @@ namespace Portfolio.Dal.Repositories
         public UserRepository(PortfolioContext context) : base(context)
         {
             _context = context;
+        }
+
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            return await _context.Users
+        .Include(u => u.Contact)                     // include related contact
+        .FirstOrDefaultAsync(u => u.Contact!.Email == email);
         }
     }
 

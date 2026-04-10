@@ -1,0 +1,83 @@
+<!-- Decorative background -->
+<div class="bg-grid"></div>
+<div class="bg-orb"></div>
+<div class="bg-scan"></div>
+
+<!-- =============================================
+       LOGIN CARD
+  ============================================= -->
+<div class="login-wrap">
+    <div class="login-card">
+
+        <!-- Header -->
+        <div class="login-header">
+            <div class="login-logo">🛡️</div>
+            <div class="login-title">Admin Access</div>
+            <div class="login-sub">Portfolio CMS · Restricted Area</div>
+        </div>
+
+        <!-- <div class="dev-hint" id="devHint">
+            <strong>// dev credentials</strong>
+            Username: <b>admin</b> &nbsp;·&nbsp; Password: <b>admin123</b><br />
+            Change these in the JS before going live.
+        </div> -->
+
+        <!-- Form / lockout toggle -->
+        <div id="formSection">
+
+            <!-- Error / success alerts -->
+            <div class="alert alert-error" [class.show]="showWarning">
+                <span>⚠️</span> <span>{{ errorMessage }}</span>
+            </div>
+
+            <!-- Username -->
+            <div class="field">
+                <label>Email</label>
+                <div class="input-wrap">
+                    <input type="text" [(ngModel)]="email" placeholder="admin" autocomplete="username" />
+                    <span class="input-icon">👤</span>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="field">
+                <label>Password</label>
+                <div class="input-wrap">
+                    <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" placeholder="••••••••"
+                        autocomplete="current-password" />
+                    <span class="input-icon">🔑</span>
+                    <button class="pw-toggle" type="button" title="Show / hide password" (click)="togglePassword()">
+                        {{ showPassword ? '🙈' : '👁' }}
+                    </button>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <button class="btn-login" (click)="attemptLogin()">
+                <span class="btn-label">Sign In →</span>
+                <div class="spinner"></div>
+            </button>
+
+            <!-- Attempt dots (max 5 tries) -->
+            <div class="attempts-bar" id="attemptDots"></div>
+
+        </div><!-- /formSection -->
+
+        <!-- Lockout screen -->
+        <div class="lockout-screen" id="lockoutScreen">
+            <div class="lockout-icon">🔐</div>
+            <div class="lockout-title">Account Temporarily Locked</div>
+            <div class="lockout-msg">Too many failed attempts.<br />Please wait before trying again.</div>
+            <div class="lockout-timer" id="lockoutTimer">00:30</div>
+            <div style="font-size:.8rem;color:var(--muted)">Countdown will reset automatically.</div>
+        </div>
+
+        <!-- Footer -->
+        <div class="login-footer">
+            <a routerLink="/home">← Back to Portfolio</a>
+            &nbsp;·&nbsp;
+            Portfolio CMS
+        </div>
+
+    </div>
+</div>

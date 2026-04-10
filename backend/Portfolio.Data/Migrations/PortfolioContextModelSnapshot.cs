@@ -121,7 +121,7 @@ namespace Portfolio.Data.Migrations
                             Id = 2,
                             Desc = "Full-stack booking platform for managing restaurant reservations and customer scheduling in real time.",
                             Icon = "🛒",
-                            Theme = 1,
+                            Theme = 3,
                             Title = "Restaurant Reservation System",
                             githubLink = "https://github.com/lortkipa/Restaurant-Reservation-System"
                         },
@@ -615,6 +615,11 @@ namespace Portfolio.Data.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ContactId")
@@ -627,7 +632,8 @@ namespace Portfolio.Data.Migrations
                         {
                             Id = 1,
                             ContactId = 1,
-                            FullName = "Nikoloz Lortkipanidze"
+                            FullName = "Nikoloz Lortkipanidze",
+                            PasswordHash = "JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk="
                         });
                 });
 

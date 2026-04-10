@@ -1,0 +1,45 @@
+/* ---- TAGS PANEL ---- */
+.tags-panel-grid {
+    display: grid;
+    // grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (max-width: 800px) {
+    .tags-panel-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.tag-manage-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+.tag-manage-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.8rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    transition: border-color var(--T);
+}
+
+.tag-manage-item:hover {
+    border-color: var(--border2);
+}
+.tag-manage-name {
+    flex: 1;
+    font-size: 0.87rem;
+    font-weight: 500;
+}
+.tag-usage {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    background: var(--surface3);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+}

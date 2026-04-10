@@ -1,0 +1,99 @@
+<div class="panel active" id="panel-projects">
+    <!-- <div class="preview-bar">
+        <span class="note">🗂 Projects Section</span>
+        <span>Tags come from the shared Tags table — consistent with Skills.</span>
+    </div> -->
+    <div class="add-row"><button class="btn btn-primary"
+            (click)="addMode.set(true); selectedProject.set({id: 0, icon: '', title: '', desc: '', theme: 1, githubLink: '', demoLink: '', tags: []})">+
+            Add Project</button></div>
+    <div class="item-list" id="projectList">
+        <div class="item-card" *ngFor="let project of projects()">
+            <div class="item-card-icon" [style.background]="projectThemeServ.gradients[project.theme]">{{project.icon}}
+            </div>
+            <div class="item-card-body">
+                <div class="item-card-title">{{project.title}}</div>
+                <div class="item-card-sub" style="margin-bottom:.4rem">{{project.desc}}</div>
+                <div class="mini-tags">
+                    <span class="mini-tag" *ngFor="let tag of project.tags">{{tag.name}}</span>
+                </div>
+            </div>
+            <div class="item-card-actions">
+                <button class="btn btn-ghost" (click)="editMode.set(true); selectedProject.set(project)">✏️
+                    Edit</button>
+                <button class="btn btn-danger">🗑</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="projectModal" [class.open]="addMode() || editMode()">
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-title" id="projectModalTitle">{{addMode() ? 'Add' : 'Edit'}} Project</div>
+            <button class="modal-close" (click)="addMode.set(false); editMode.set(false)">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="field" style="margin-bottom:1rem">
+                <label>Project Title</label>
+                <input type="text" id="proj-title" placeholder="My Awesome Project"
+                    [(ngModel)]="selectedProject().title" [value]="selectedProject().title">
+            </div>
+            <div class="field" style="margin-bottom:1rem">
+                <label>Short Description</label>
+                <textarea id="proj-desc" rows="3" [(ngModel)]="selectedProject().desc"
+                    [value]="selectedProject().desc"></textarea>
+            </div>
+            <div class="field-row" style="margin-bottom:1rem">
+                <div class="field">
+                    <label>Emoji / Icon</label>
+                    <input type="text" id="proj-icon" placeholder="🚀" maxlength="4"
+                        [(ngModel)]="selectedProject().icon" />
+                </div>
+                <div class="field">
+                    <label>Card Gradient (CSS)</label>
+                    <select [ngModel]="selectedProject().theme"
+                        (ngModelChange)="selectedProject.update(p => ({...p, theme: +$event}))">
+
+                        <option *ngFor="let theme of themes" [value]="theme.value">
+                            {{ theme.name }}
+                        </option>
+                    </select>
+                    <!-- <input type="text" id="proj-gradient" placeholder="linear-gradient(135deg,#FDE8D8,#F9C4A1)" /> -->
+                </div>
+            </div>
+            <div class="field" style="margin-bottom:1rem">
+                <label>Tags — picked from shared table</label>
+                <div class="tag-picker">
+                    <div class="tag-selected-bar" id="projSelectedTags">
+                        <span class="tag-pill" *ngFor="let tag of visibleSelectedTags()">{{tag.name}}<span
+                                class="remove" onclick="pickerDeselect('proj','t9')">×</span></span>
+                    </div>
+                    <div class="tag-search-row">
+                        <input type="text" id="projTagSearch" placeholder="Search tags" />
+                        <!-- <button class="btn btn-ghost btn-sm">+ New</button> -->
+                    </div>
+                    <div class="tag-cloud" id="projTagCloud">
+                        <span class="tag-cloud-item" *ngFor="let tag of tags()"
+                            [class.selected]="(selectedProject().tags.some(t => t.id === tag.id) || shouldAddTagIds().includes(tag.id)) && !shouldRemoveTagIds().includes(tag.id)"
+                            (click)="toggleTag(tag.id)">{{tag.name}}</span>
+                    </div>
+                </div>
+                <!-- <div style="font-size:.73rem;color:var(--text-muted);margin-top:.35rem">
+                    Click to select/deselect. "+ New" adds to the shared Tags table.
+                </div> -->
+            </div>
+            <div class="field">
+                <label>GitHub URL</label>
+                <input type="url" id="proj-url" placeholder="https://github.com/you/repo"
+                    [(ngModel)]="selectedProject().githubLink" [value]="selectedProject().githubLink" />
+                <label style="margin-top: 8px;">Demo URL</label>
+                <input type="url" id="proj-url" placeholder="https://demo.com" [(ngModel)]="selectedProject().demoLink"
+                    [value]="selectedProject().demoLink" />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" (click)="addMode.set(false); editMode.set(false)">Cancel</button>
+            <button class="btn btn-primary" (click)="saveProject()">Save Project</button>
+        </div>
+    </div>
+</div>

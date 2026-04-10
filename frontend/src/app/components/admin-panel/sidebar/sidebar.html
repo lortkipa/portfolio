@@ -1,0 +1,47 @@
+<aside id="sidebar" [class.open]="open">
+
+  <div class="sidebar-logo">
+    <div class="mark">// admin panel</div>
+    <h1>Portfolio CMS</h1>
+  </div>
+
+  <nav class="sidebar-nav">
+
+    <div class="nav-group-label">Overview</div>
+    <div class="nav-item" routerLink="/admin-panel/dashboard" routerLinkActive="active">
+      <span class="ico">▦</span> Dashboard
+    </div>
+
+    <div class="nav-group-label">Content</div>
+
+    <div class="nav-item" routerLink="/admin-panel/about-me" routerLinkActive="active">
+      <span class="ico">👤</span> About Me
+    </div>
+
+    <div class="nav-item" routerLink="/admin-panel/tags" routerLinkActive="active">
+      <span class="ico">🏷️</span> Tags
+    </div>
+
+    <div class="nav-item" routerLink="/admin-panel/skills" routerLinkActive="active">
+      <span class="ico">⚡</span> Skills
+    </div>
+
+    <div class="nav-item" routerLink="/admin-panel/projects" routerLinkActive="active">
+      <span class="ico">🗂</span> Projects
+    </div>
+
+    <div class="nav-group-label">Inbox</div>
+
+    <div class="nav-item" routerLink="/admin-panel/messages" routerLinkActive="active">
+      <span class="ico">✉️</span> Messages
+    </div>
+
+    <div class="nav-group-label">Site</div>
+
+    <div class="nav-item" routerLink="/admin-panel/settings" routerLinkActive="active">
+      <span class="ico">⚙️</span> Settings
+    </div>
+
+  </nav>
+
+</aside>

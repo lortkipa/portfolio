@@ -1,0 +1,51 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(14,15,17,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: .9rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.topbar-title {
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.topbar-title .breadcrumb {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: .85rem;
+}
+
+.topbar-actions {
+  display: flex;
+  gap: .6rem;
+}
+
+.mob-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+@media(max-width:700px) {
+  .mob-menu-btn {
+    display: block;
+  }
+
+  .topbar {
+    padding: .8rem 1rem;
+  }
+}

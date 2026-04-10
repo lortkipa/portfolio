@@ -1,11 +1,15 @@
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Portfolio.Dal.Repositories;
 using Portfolio.Data;
 using Portfolio.Service;
 using Portfolio.Service.Interfaces;
 using Portfolio.Service.Mapping;
+using System.Security.Claims;
+using System.Text;
 
 namespace Portfolio.API
 {
@@ -30,8 +34,54 @@ namespace Portfolio.API
 
             builder.Services.AddScoped<DbContext, PortfolioContext>();
 
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+     {
+         options.TokenValidationParameters = new TokenValidationParameters
+         {
+             ValidateIssuerSigningKey = true,
+             IssuerSigningKey = new SymmetricSecurityKey(
+                 Encoding.UTF8.GetBytes(builder.Configuration["JWTConfig:Key"])),
+
+             ValidateIssuer = false,
+             ValidateAudience = false,
+             ValidateLifetime = true,
+
+             // 🔹 Only name identifier (userId) is relevant
+             NameClaimType = ClaimTypes.NameIdentifier,
+             RoleClaimType = ClaimTypes.Role // optional, won't be used
+         };
+
+         options.Events = new JwtBearerEvents
+         {
+             OnMessageReceived = context =>
+             {
+                 // 1️⃣ Check cookie first (optional)
+                 if (context.Request.Cookies.ContainsKey("Token"))
+                 {
+                     context.Token = context.Request.Cookies["Token"];
+                 }
+
+                 // 2️⃣ Fallback to Authorization header
+                 if (string.IsNullOrEmpty(context.Token) &&
+                     context.Request.Headers.ContainsKey("Authorization"))
+                 {
+                     var authHeader = context.Request.Headers["Authorization"].ToString();
+                     if (authHeader.StartsWith("Bearer "))
+                     {
+                         context.Token = authHeader.Substring("Bearer ".Length).Trim();
+                     }
+                 }
+
+                 return Task.CompletedTask;
+             }
+         };
+     });
+
             builder.Services.AddControllers();
             builder.Services.AddAutoMapper(cfg => { }, typeof(MappingProfile).Assembly);
+
+            builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             // Add repositories to the container
             builder.Services.AddScoped<ITagRepository, TagRepository>();

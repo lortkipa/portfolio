@@ -1,0 +1,9 @@
+<div
+  id="toast"
+  [class.show]="toastServ.visible()"
+  [class.success]="toastServ.type() === 'success'"
+  [class.error]="toastServ.type() === 'error'"
+  [class.info]="toastServ.type() === 'info'"
+>
+  {{ toastServ.message() }}
+</div>

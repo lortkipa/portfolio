@@ -60,5 +60,25 @@ namespace Portfolio.Service
             await _repo.DeleteAsync(id);
             return true;
         }
+        public async Task<bool> AddTag(int projectId, int tagId)
+        {
+            var entity = new ProjectTag
+            {
+                ProjectId = projectId,
+                TagId = tagId
+            };
+
+            await _repo.AddAsync(entity);
+            return true;
+        }
+        public async Task<bool> RemoveTag(int projectId, int tagId)
+        {
+            var entity = await _repo.GetByProjectAndTagAsync(projectId, tagId);
+            if (entity == null)
+                return false;
+
+            await _repo.DeleteAsync(entity.Id);
+            return true;
+        }
     }
 }

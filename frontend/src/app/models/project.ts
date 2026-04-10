@@ -2,7 +2,7 @@ import { TagModel } from "./tag";
 
 export enum ProjectThemes {
     Orange = 1,
-    Blue, 
+    Blue,
     Green
 }
 

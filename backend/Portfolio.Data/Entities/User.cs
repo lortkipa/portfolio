@@ -16,6 +16,9 @@ namespace Portfolio.Data.Entities
         [Required]
         [MaxLength(25)]
         public string FullName { get; set; } = null!;
+        [Required]
+        [MaxLength(100)]
+        public string PasswordHash { get; set; } = null!;
 
         // User => Contact
         public Contact? Contact { get; set; }

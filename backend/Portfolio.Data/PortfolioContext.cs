@@ -4,6 +4,7 @@ using Portfolio.Data.Entities;
 using Portfolio.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Portfolio.Data
@@ -36,6 +37,14 @@ namespace Portfolio.Data
             // add configurations
             modelBuilder.ApplyConfiguration(new TagConfiguration());
             modelBuilder.ApplyConfiguration(new SkillConfiguration());
+
+            // hash password
+            string passwordHash;
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes("admin123"));
+                passwordHash = Convert.ToBase64String(hashedBytes);
+            }
 
             // seeding
             modelBuilder.Entity<Tag>().HasData(
@@ -113,7 +122,7 @@ namespace Portfolio.Data
                     Icon = "🛒",
                     Title = "Restaurant Reservation System",
                     Desc = "Full-stack booking platform for managing restaurant reservations and customer scheduling in real time.",
-                    Theme = ProjectThemes.Orange,
+                    Theme = ProjectThemes.Green,
                     githubLink = "https://github.com/lortkipa/Restaurant-Reservation-System",
                     demoLink = null
                 },
@@ -158,7 +167,8 @@ namespace Portfolio.Data
                 {
                     Id = 1,
                     ContactId = 1,
-                    FullName = "Nikoloz Lortkipanidze"
+                    FullName = "Nikoloz Lortkipanidze",
+                    PasswordHash = passwordHash
                 }
             );
         }

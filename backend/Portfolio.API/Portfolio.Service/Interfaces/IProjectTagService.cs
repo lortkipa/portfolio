@@ -12,5 +12,7 @@ namespace Portfolio.Service.Interfaces
         Task<bool> CreateAsync(CreateProjectTagDTO model);
         Task<bool> UpdateAsync(int id, UpdateProjectTagDTO model);
         Task<bool> DeleteAsync(int id);
+        Task<bool> AddTag(int projectId, int tagId);
+        Task<bool> RemoveTag(int projectId, int tagId);
     }
 }

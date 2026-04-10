@@ -1,23 +1,29 @@
 ﻿using AutoMapper;
 using Portfolio.Dal.Repositories;
 using Portfolio.Data.Entities;
+using Portfolio.Service.DTO;
 using Portfolio.Service.DTO.User;
 using Portfolio.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 namespace Portfolio.Service
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _repo;
+        private readonly IContactRepository _contactRepo;
         private readonly IMapper _mapper;
+        private readonly IPasswordHasher _hasher;
 
-        public UserService(IUserRepository repo, IMapper mapper)
+        public UserService(IUserRepository repo, IContactRepository contactRepo, IMapper mapper, IPasswordHasher hasher)
         {
             _repo = repo;
+            _contactRepo = contactRepo;
             _mapper = mapper;
+            _hasher = hasher;
         }
 
         public async Task<IEnumerable<UserDTO>> GetAllAsync()
@@ -30,6 +36,11 @@ namespace Portfolio.Service
             var entity = await _repo.GetByIdAsync(id);
             if (entity == null) throw new Exception("entity not found");
 
+            return _mapper.Map<UserDTO>(entity);
+        }
+        public async Task<UserDTO> GetByEmailAsync(string email)
+        {
+            var entity = await _repo.GetByEmailAsync(email);
             return _mapper.Map<UserDTO>(entity);
         }
         public async Task<bool> CreateAsync(CreateUserDTO model)
@@ -58,6 +69,17 @@ namespace Portfolio.Service
 
             await _repo.DeleteAsync(id);
             return true;
+        }
+        public async Task<AuthResponseDTO> LoginAsync(LoginUserDTO model)
+        {
+            var user = await _repo.GetByEmailAsync(model.Email);
+            if (user == null)
+                return new AuthResponseDTO { Status = false, Message = "Invalid Email or Password" };
+
+            if (await _hasher.VerifyPassword(model.Password, user.PasswordHash) == false)
+                return new AuthResponseDTO { Status = false, Message = "Invalid Email or Password" };
+
+            return new AuthResponseDTO { Status = true, Message = "Login was successful" };
         }
     }
 }

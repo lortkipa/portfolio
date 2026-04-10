@@ -12,3 +12,8 @@ export interface UserProfileModel {
     fullName: string
     contact: ContactModel
 }
+
+export interface LoginUserModel {
+    email: string
+    password: string
+}

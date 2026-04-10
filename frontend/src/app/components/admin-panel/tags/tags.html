@@ -1,0 +1,57 @@
+<div class="panel" id="panel-tags">
+    <!-- <div class="preview-bar">
+        <span class="note">🏷️ Shared Tags Table</span>
+        <span>One pool — used by both Skills and Projects. Wire to <code>GET /api/tags</code>.</span>
+    </div> -->
+
+    <div class="form-section">
+        <div class="form-section-title">➕ Create New Tag</div>
+        <div style="display:flex;gap:.7rem;align-items:flex-end">
+            <div class="field" style="flex:1"><label>Tag Name</label><input type="text" id="newTagInput"
+                    placeholder="e.g. React, Docker, PostgreSQL…" /></div>
+            <button class="btn btn-primary" onclick="createTag()">Add Tag</button>
+        </div>
+        <!-- <div style="margin-top:.5rem;font-size:.77rem;color:var(--text-muted)">Press <code>Enter</code> to add quickly.
+        </div> -->
+    </div>
+
+    <div class="tags-panel-grid">
+        <div class="form-section" style="margin-bottom:0">
+            <div class="form-section-title">
+                📋 All Tags
+                <span id="tagCountBadge"
+                    style="margin-left:auto;font-weight:400;font-size:.85em;text-transform:none;letter-spacing:0;color:var(--text-muted)"></span>
+            </div>
+            <input type="text" id="tagFilterInput" placeholder="Filter tags…"
+                style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:.5rem .8rem;color:var(--text);font-size:.85rem;outline:none;margin-bottom:.8rem;transition:border-color var(--T)"
+                oninput="renderTagsPanel()" onfocus="this.style.borderColor='var(--accent)'"
+                onblur="this.style.borderColor='var(--border)'" />
+            <div class="tag-manage-list" id="allTagsList">
+                <div class="tag-manage-item" *ngFor="let tag of tags()">
+                    <span class="tag-manage-name">{{tag.name}}</span>
+                    <!-- <span class="tag-usage">Skills + Projects</span> -->
+                    <button class="btn btn-ghost btn-sm" onclick="renameTag('t1')" title="Rename">✏️</button>
+                    <button class="btn btn-danger btn-sm" onclick="confirmDeleteTag('t1')" title="Delete">🗑</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="form-section" style="margin-bottom:0">
+            <div class="form-section-title">📊 Usage Overview</div>
+            <div style="margin-bottom:.9rem">
+                <div class="label-sm" style="margin-bottom:.45rem">Used in Skills</div>
+                <div class="mini-tags" id="tagsInSkills"></div>
+            </div>
+            <hr class="divider" />
+            <div style="margin-bottom:.9rem">
+                <div class="label-sm" style="margin-bottom:.45rem">Used in Projects</div>
+                <div class="mini-tags" id="tagsInProjects"></div>
+            </div>
+            <hr class="divider" />
+            <div>
+                <div class="label-sm" style="margin-bottom:.45rem">Unused Tags</div>
+                <div class="mini-tags" id="tagsUnused"></div>
+            </div>
+        </div> -->
+    </div>
+</div>

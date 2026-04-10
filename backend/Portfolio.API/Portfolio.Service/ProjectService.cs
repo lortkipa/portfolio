@@ -32,13 +32,13 @@ namespace Portfolio.Service
 
             return _mapper.Map<ProjectDTO>(entity);
         }
-        public async Task<bool> CreateAsync(CreateProjectDTO model)
+        public async Task<ProjectDTO> CreateAsync(CreateProjectDTO model)
         {
-            if (model == null) return false;
+            if (model == null) return null;
 
             var entity = _mapper.Map<Project>(model);
             await _repo.AddAsync(entity);
-            return _mapper.Map<ProjectDTO>(entity) != null;
+            return _mapper.Map<ProjectDTO>(entity);
         }
         public async Task<bool> UpdateAsync(int id, UpdateProjectDTO model)
         {

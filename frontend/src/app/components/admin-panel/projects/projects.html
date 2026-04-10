@@ -20,7 +20,7 @@
             <div class="item-card-actions">
                 <button class="btn btn-ghost" (click)="editMode.set(true); selectedProject.set(project)">✏️
                     Edit</button>
-                <button class="btn btn-danger">🗑</button>
+                <button class="btn btn-danger" (click)="removeProject(project.id)">🗑</button>
             </div>
         </div>
     </div>

@@ -15,7 +15,12 @@ export class ProjectService {
     return this.http.get<ProjectModel[]>(`${this.globals.apiUrl()}/Project/GetAll`)
   }
 
-  update(token: string, id: number, data : ProjectModel): Observable<AuthResponseModel> {
+  add(token: string, data: ProjectModel): Observable<ProjectModel> {
+    return this.http.post<ProjectModel>(`${this.globals.apiUrl()}/Project/Add`, data,
+      { headers: { Authorization: `Bearer ${token}` } })
+  }
+
+  update(token: string, id: number, data: ProjectModel): Observable<AuthResponseModel> {
     return this.http.put<AuthResponseModel>(`${this.globals.apiUrl()}/Project/Update/${id}`, data,
       { headers: { Authorization: `Bearer ${token}` } })
   }
@@ -27,6 +32,11 @@ export class ProjectService {
 
   removeTag(token: string, projectId: number, tagId: number): Observable<AuthResponseModel> {
     return this.http.put<AuthResponseModel>(`${this.globals.apiUrl()}/Project/RemoveTag/${projectId}`, tagId,
+      { headers: { Authorization: `Bearer ${token}` } })
+  }
+
+  remove(token: string, id: number): Observable<AuthResponseModel> {
+    return this.http.delete<AuthResponseModel>(`${this.globals.apiUrl()}/Project/Delete/${id}`,
       { headers: { Authorization: `Bearer ${token}` } })
   }
 }

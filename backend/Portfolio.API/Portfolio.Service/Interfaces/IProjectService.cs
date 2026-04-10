@@ -9,7 +9,7 @@ namespace Portfolio.Service.Interfaces
     {
         Task<IEnumerable<ProjectDTO>> GetAllAsync();
         Task<ProjectDTO> GetByIdAsync(int id);
-        Task<bool> CreateAsync(CreateProjectDTO model);
+        Task<ProjectDTO> CreateAsync(CreateProjectDTO model);
         Task<bool> UpdateAsync(int id, UpdateProjectDTO model);
         Task<bool> DeleteAsync(int id);
     }

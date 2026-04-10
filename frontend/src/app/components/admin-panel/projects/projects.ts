@@ -4,7 +4,7 @@ import { ProjectService } from '../../../services/project-service';
 import { ProjectModel, ProjectThemes } from '../../../models/project';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Observable, single } from 'rxjs';
+import { Observable, of, single, switchMap } from 'rxjs';
 import { TagService } from '../../../services/tag-service';
 import { TagModel } from '../../../models/tag';
 import { ProjectThemeService } from '../../../services/project-theme-service';
@@ -90,40 +90,46 @@ export class Projects {
 
   saveProject() {
     const token = this.localStorageServ.getItem('token');
-    const requests: Observable<any>[] = [];
+    const project = this.selectedProject();
 
     if (this.editMode()) {
-      // 1. Add the main project update (title, theme, etc.) to the queue
-      requests.push(this.projectServ.update(token, this.selectedProject().id, this.selectedProject()))
+      // 1. Update Project and Manage Tags in parallel
+      const updateReq = this.projectServ.update(token, project.id, project);
+      const addTagReqs = this.shouldAddTagIds().map(id => this.projectServ.addTag(token, project.id, id));
+      const removeTagReqs = this.shouldRemoveTagIds().map(id => this.projectServ.removeTag(token, project.id, id));
 
-      // 2. Add tag additions
-      this.shouldAddTagIds().forEach(tagId => {
-        requests.push(this.projectServ.addTag(token, this.selectedProject().id, tagId));
+      forkJoin([updateReq, ...addTagReqs, ...removeTagReqs]).subscribe({
+        next: () => this.toastServ.show('Project updated', 'success'),
+        error: (err) => this.toastServ.show('Failed to update project', 'error')
       });
 
-      // 3. Add tag removals
-      this.shouldRemoveTagIds().forEach(tagId => {
-        requests.push(this.projectServ.removeTag(token, this.selectedProject().id, tagId));
+    } else {
+      // 2. Create Project FIRST, then add tags using the new ID
+      this.projectServ.add(token, project).pipe(
+        switchMap((newProject) => {
+          const tagReqs = this.shouldAddTagIds().map(id =>
+            this.projectServ.addTag(token, newProject.id, id)
+          );
+          // If no tags, just return the project
+          return tagReqs.length > 0 ? forkJoin(tagReqs) : of(newProject);
+        })
+      ).subscribe({
+        next: (data) => this.toastServ.show('Project added', 'success'),
+        error: (err) => this.toastServ.show('Failed to add project', 'error')
       });
     }
 
-    if (requests.length === 0) {
-      this.finalizeSave();
-      return;
-    }
+    this.finalizeSave()
+  }
 
-    // Execute everything in parallel and wait for all to finish
-    forkJoin(requests).subscribe({
-      next: (res) => {
-        this.toastServ.show('Project and tags updated successfully', 'success');
-        this.finalizeSave();
+  removeProject(id: number) {
+    this.projectServ.remove(this.localStorageServ.getItem('token'), id).subscribe({
+      next: () => {
+        this.toastServ.show('Project removed', 'success')
+        this.finalizeSave()
       },
-      error: (err) => {
-        const msg = err.error?.message || 'Failed to update project';
-        this.toastServ.show(msg, 'error');
-        this.finalizeSave();
-      }
-    });
+      error: () => this.toastServ.show('Failed to remove project', 'error')
+    })
   }
 
   finalizeSave() {

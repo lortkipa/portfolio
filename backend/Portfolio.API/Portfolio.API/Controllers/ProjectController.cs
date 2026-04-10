@@ -58,6 +58,28 @@ namespace Portfolio.API.Controllers
             return Ok(result);
         }
         [Authorize]
+        [HttpPost("Add")]
+        public async Task<ActionResult<ProjectDTO>> Add([FromBody] CreateProjectDTO model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(new AuthResponseDTO
+                {
+                    Status = false,
+                    Message = "Invalid Request Data"
+                });
+
+            var result = await _projectServ.CreateAsync(model);
+
+            if (result != null)
+                return Ok(result);
+
+            return BadRequest(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Failed to create project"
+            });
+        }
+        [Authorize]
         [HttpPut("Update/{id:int}")]
         public async Task<ActionResult<AuthResponseDTO>> Update(int id, [FromBody] UpdateProjectDTO model)
         {
@@ -84,7 +106,7 @@ namespace Portfolio.API.Controllers
                 });
             }
 
-            return Ok(new AuthResponseDTO
+            return BadRequest(new AuthResponseDTO
             {
                 Status = true,
                 Message = "Failed to update project"
@@ -124,7 +146,7 @@ namespace Portfolio.API.Controllers
                 });
             }
 
-            return Ok(new AuthResponseDTO
+            return BadRequest(new AuthResponseDTO
             {
                 Status = true,
                 Message = "Failed to add tag"
@@ -164,10 +186,43 @@ namespace Portfolio.API.Controllers
                 });
             }
 
-            return Ok(new AuthResponseDTO
+            return BadRequest(new AuthResponseDTO
             {
                 Status = true,
                 Message = "Failed To remove Tag"
+            });
+        }
+        [Authorize]
+        [HttpDelete("Delete/{id:int}")]
+        public async Task<ActionResult<AuthResponseDTO>> Delete(int id)
+        {
+            if (!ModelState.IsValid) return BadRequest(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Invalid request data"
+            });
+
+            var project = await _projectServ.GetByIdAsync(id);
+            if (project == null) return NotFound(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Project doesn't exist"
+            });
+
+            var result = await _projectServ.DeleteAsync(id);
+            if (result)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    Status = true,
+                    Message = "Project deleted successfully"
+                });
+            }
+
+            return BadRequest(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Failed to delete project"
             });
         }
     }

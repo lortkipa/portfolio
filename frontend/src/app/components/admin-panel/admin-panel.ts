@@ -5,6 +5,7 @@ import { Header } from "./header/header";
 import { LocalStorageService } from '../../services/local-storage-service';
 import { Footer } from "../home/footer/footer";
 import { Toast } from './toast/toast';
+import { ToastService } from '../../services/toast-service';
 
 @Component({
   standalone: true,
@@ -18,7 +19,7 @@ export class AdminPanel {
   
   sidebarOpen = false;
 
-  constructor(private localStorage: LocalStorageService, private renderer: Renderer2, private router: Router) {
+  constructor(private toastServ: ToastService, private localStorage: LocalStorageService, private renderer: Renderer2, private router: Router) {
     if (!this.localStorage.getItem('token'))
       this.router.navigate(['/authorization'])
   }

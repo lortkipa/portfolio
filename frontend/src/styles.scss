@@ -626,3 +626,66 @@ html:has(body.dashboard-page) {
     scroll-behavior: smooth;
     height: 100%;
 }
+
+body.error-page {
+    // --primary-color: #ffa500;
+    --primary-color: #c8622a; 
+    --text-color: #000000;
+    --background-color: #ffffff;
+    --muted-color: #666666;
+
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    .error-container {
+        max-width: 600px;
+        padding: 3rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 4rem;
+        margin: 0;
+        font-weight: 700;
+        color: var(--primary-color);
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        margin: 1rem 0;
+        font-weight: 500;
+        color: var(--text-color);
+    }
+
+    p {
+        font-size: 1rem;
+        color: var(--muted-color);
+        margin: 1rem 0 2rem;
+        line-height: 1.5;
+    }
+
+    a {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #e68a00;
+    }
+}

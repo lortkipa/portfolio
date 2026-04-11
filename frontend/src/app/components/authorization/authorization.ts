@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
 import { UserService } from '../../services/user-service';
 import { LocalStorageService } from '../../services/local-storage-service';
+import { Toast } from "./toast/toast";
+import { ToastService } from '../../services/toast-service';
 
 @Component({
   standalone: true,
   selector: 'app-authorization',
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, RouterLink, Toast],
   templateUrl: './authorization.html',
   styleUrl: './authorization.scss',
 })
@@ -24,7 +26,8 @@ export class Authorization {
     private userServ: UserService,
     private cdr: ChangeDetectorRef,
     private localStorageServ : LocalStorageService,
-    private router : Router
+    private router : Router,
+    private toastServ: ToastService
   ) {}
 
   ngOnInit() {

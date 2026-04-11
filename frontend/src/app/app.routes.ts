@@ -9,6 +9,7 @@ import { Skills } from './components/admin-panel/skills/skills';
 import { Projects } from './components/admin-panel/projects/projects';
 import { Messages } from './components/admin-panel/messages/messages';
 import { Settings } from './components/admin-panel/settings/settings';
+import { NotFound } from './components/errors/not-found/not-found';
 
 export const routes: Routes = [
     {
@@ -63,4 +64,9 @@ export const routes: Routes = [
             }
         ]
     },
+
+    {
+        path: '**',
+        component: NotFound
+    }
 ];

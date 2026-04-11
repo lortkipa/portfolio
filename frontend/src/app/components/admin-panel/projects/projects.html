@@ -69,11 +69,12 @@
                                 class="remove" onclick="pickerDeselect('proj','t9')">×</span></span>
                     </div>
                     <div class="tag-search-row">
-                        <input type="text" id="projTagSearch" placeholder="Search tags" />
+                        <input type="text" placeholder="Search tags" [ngModel]="tagSearch()"
+                            (ngModelChange)="tagSearch.set($event)" />
                         <!-- <button class="btn btn-ghost btn-sm">+ New</button> -->
                     </div>
                     <div class="tag-cloud" id="projTagCloud">
-                        <span class="tag-cloud-item" *ngFor="let tag of tags()"
+                        <span class="tag-cloud-item" *ngFor="let tag of filteredTags()"
                             [class.selected]="(selectedProject().tags.some(t => t.id === tag.id) || shouldAddTagIds().includes(tag.id)) && !shouldRemoveTagIds().includes(tag.id)"
                             (click)="toggleTag(tag.id)">{{tag.name}}</span>
                     </div>

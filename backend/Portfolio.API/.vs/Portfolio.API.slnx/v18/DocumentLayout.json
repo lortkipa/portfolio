@@ -34,8 +34,7 @@
               "RelativeToolTip": "Portfolio.Service\\Interfaces\\ITagService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T06:04:31.61Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-11T06:04:31.61Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "Portfolio.API\\Controllers\\ProjectController.cs",
               "ViewState": "AgIAANMAAAAAAAAAAAAUwOEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T08:01:02.271Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T08:01:02.271Z"
             }
           ]
         }

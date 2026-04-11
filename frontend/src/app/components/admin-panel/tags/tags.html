@@ -9,7 +9,7 @@
         <div style="display:flex;gap:.7rem;align-items:flex-end">
             <div class="field" style="flex:1"><label>Tag Name</label>
                 <input type="text" id="newTagInput" placeholder="e.g. React, Docker, PostgreSQL…"
-                [(ngModel)]="addTagData().name" />
+                    [(ngModel)]="addTagData().name" />
             </div>
             <button class="btn btn-primary" (click)="addTag()">Add Tag</button>
         </div>
@@ -26,15 +26,14 @@
             </div>
             <input type="text" id="tagFilterInput" placeholder="Filter tags…"
                 style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:.5rem .8rem;color:var(--text);font-size:.85rem;outline:none;margin-bottom:.8rem;transition:border-color var(--T)"
-                [ngModel]="searchInput()"
-  (ngModelChange)="searchInput.set($event)"
-
-                [(ngModel)]="searchInput"  />
+                [ngModel]="searchInput()" (ngModelChange)="searchInput.set($event)" [(ngModel)]="searchInput" />
             <div class="tag-manage-list" id="allTagsList">
                 <div class="tag-manage-item" *ngFor="let tag of filteredTags(); let i = index">
                     <span class="tag-manage-name">{{tag.name}}</span>
                     <!-- <span class="tag-usage">Skills + Projects</span> -->
-                    <button class="btn btn-ghost btn-sm" (click)="editMode.set(true); updateTagId.set(tag.id); updateTagData.set({ ...tag })" title="Rename">✏️</button>
+                    <button class="btn btn-ghost btn-sm"
+                        (click)="editMode.set(true); updateTagId.set(tag.id); updateTagData.set({ ...tag })"
+                        title="Rename">✏️</button>
                     <button class="btn btn-danger btn-sm" (click)="removeTag(i)" title="Delete">🗑</button>
                 </div>
             </div>

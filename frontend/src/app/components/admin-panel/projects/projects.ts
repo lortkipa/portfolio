@@ -19,6 +19,16 @@ import { forkJoin } from 'rxjs';
   styleUrl: './projects.scss',
 })
 export class Projects {
+  tagSearch = signal('');
+  filteredTags = computed(() => {
+    const q = this.tagSearch().toLowerCase().trim();
+
+    if (!q) return this.tags();
+
+    return this.tags().filter(tag =>
+      tag.name.toLowerCase().includes(q)
+    );
+  });
 
   editMode = signal<boolean>(false)
   addMode = signal<boolean>(false)

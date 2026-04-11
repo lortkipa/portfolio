@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DDF8E897-9209-9E5A-82C6-7783AD9B9722}|Portfolio.API\\Portfolio.API.csproj|c:\\users\\administrator\\desktop\\portfolio\\backend\\portfolio.api\\portfolio.api\\controllers\\tagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDF8E897-9209-9E5A-82C6-7783AD9B9722}|Portfolio.API\\Portfolio.API.csproj|solutionrelative:portfolio.api\\controllers\\tagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DDF8E897-9209-9E5A-82C6-7783AD9B9722}|Portfolio.API\\Portfolio.API.csproj|c:\\users\\administrator\\desktop\\portfolio\\backend\\portfolio.api\\portfolio.api\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DDF8E897-9209-9E5A-82C6-7783AD9B9722}|Portfolio.API\\Portfolio.API.csproj|solutionrelative:portfolio.api\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40B8B9C8-CBB3-0180-703E-ED450EA81C2C}|Portfolio.Service\\Portfolio.Service.csproj|c:\\users\\administrator\\desktop\\portfolio\\backend\\portfolio.api\\portfolio.service\\interfaces\\itagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40B8B9C8-CBB3-0180-703E-ED450EA81C2C}|Portfolio.Service\\Portfolio.Service.csproj|solutionrelative:portfolio.service\\interfaces\\itagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,17 +22,43 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ITagService.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\Portfolio.Service\\Interfaces\\ITagService.cs",
+              "RelativeDocumentMoniker": "Portfolio.Service\\Interfaces\\ITagService.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\Portfolio.Service\\Interfaces\\ITagService.cs",
+              "RelativeToolTip": "Portfolio.Service\\Interfaces\\ITagService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T06:04:31.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TagController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\Portfolio.API\\Controllers\\TagController.cs",
+              "RelativeDocumentMoniker": "Portfolio.API\\Controllers\\TagController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\Portfolio.API\\Controllers\\TagController.cs*",
+              "RelativeToolTip": "Portfolio.API\\Controllers\\TagController.cs*",
+              "ViewState": "AgIAABgAAAAAAAAAAAAqwDoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T05:59:31.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ProjectController.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\Portfolio.API\\Controllers\\ProjectController.cs",
               "RelativeDocumentMoniker": "Portfolio.API\\Controllers\\ProjectController.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\Portfolio.API\\Controllers\\ProjectController.cs*",
-              "RelativeToolTip": "Portfolio.API\\Controllers\\ProjectController.cs*",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAwFAAAAAJAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\portfolio\\backend\\Portfolio.API\\Portfolio.API\\Controllers\\ProjectController.cs",
+              "RelativeToolTip": "Portfolio.API\\Controllers\\ProjectController.cs",
+              "ViewState": "AgIAANMAAAAAAAAAAAAUwOEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-10T08:01:02.271Z",
               "EditorCaption": ""

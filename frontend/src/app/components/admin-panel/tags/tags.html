@@ -7,9 +7,11 @@
     <div class="form-section">
         <div class="form-section-title">➕ Create New Tag</div>
         <div style="display:flex;gap:.7rem;align-items:flex-end">
-            <div class="field" style="flex:1"><label>Tag Name</label><input type="text" id="newTagInput"
-                    placeholder="e.g. React, Docker, PostgreSQL…" /></div>
-            <button class="btn btn-primary" onclick="createTag()">Add Tag</button>
+            <div class="field" style="flex:1"><label>Tag Name</label>
+                <input type="text" id="newTagInput" placeholder="e.g. React, Docker, PostgreSQL…"
+                [(ngModel)]="addTagData().name" />
+            </div>
+            <button class="btn btn-primary" (click)="addTag()">Add Tag</button>
         </div>
         <!-- <div style="margin-top:.5rem;font-size:.77rem;color:var(--text-muted)">Press <code>Enter</code> to add quickly.
         </div> -->
@@ -24,14 +26,16 @@
             </div>
             <input type="text" id="tagFilterInput" placeholder="Filter tags…"
                 style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:.5rem .8rem;color:var(--text);font-size:.85rem;outline:none;margin-bottom:.8rem;transition:border-color var(--T)"
-                oninput="renderTagsPanel()" onfocus="this.style.borderColor='var(--accent)'"
-                onblur="this.style.borderColor='var(--border)'" />
+                [ngModel]="searchInput()"
+  (ngModelChange)="searchInput.set($event)"
+
+                [(ngModel)]="searchInput"  />
             <div class="tag-manage-list" id="allTagsList">
-                <div class="tag-manage-item" *ngFor="let tag of tags()">
+                <div class="tag-manage-item" *ngFor="let tag of filteredTags(); let i = index">
                     <span class="tag-manage-name">{{tag.name}}</span>
                     <!-- <span class="tag-usage">Skills + Projects</span> -->
-                    <button class="btn btn-ghost btn-sm" onclick="renameTag('t1')" title="Rename">✏️</button>
-                    <button class="btn btn-danger btn-sm" onclick="confirmDeleteTag('t1')" title="Delete">🗑</button>
+                    <button class="btn btn-ghost btn-sm" (click)="editMode.set(true); updateTagId.set(tag.id); updateTagData.set({ ...tag })" title="Rename">✏️</button>
+                    <button class="btn btn-danger btn-sm" (click)="removeTag(i)" title="Delete">🗑</button>
                 </div>
             </div>
         </div>
@@ -53,5 +57,25 @@
                 <div class="mini-tags" id="tagsUnused"></div>
             </div>
         </div> -->
+    </div>
+</div>
+
+<div class="modal-overlay" id="projectModal" [class.open]="editMode()">
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-title" id="projectModalTitle">Edit Tag</div>
+            <button class="modal-close" (click)="editMode.set(false)">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="field" style="margin-bottom:1rem">
+                <label>Tag Name</label>
+                <input type="text" id="proj-title" placeholder="e.g. React, Docker, PostgreSQL…"
+                    [(ngModel)]="updateTagData().name" [value]="updateTagData().name">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" (click)="editMode.set(false)">Cancel</button>
+            <button class="btn btn-primary" (click)="updateTag()">Save Tag</button>
+        </div>
     </div>
 </div>

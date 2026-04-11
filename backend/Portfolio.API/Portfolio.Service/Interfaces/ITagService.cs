@@ -9,7 +9,7 @@ namespace Portfolio.Service.Interfaces
     {
         Task<IEnumerable<TagDTO>> GetAllAsync();
         Task<TagDTO> GetByIdAsync(int id);
-        Task<bool> CreateAsync(CreateTagDTO model);
+        Task<TagDTO> CreateAsync(CreateTagDTO model);
         Task<bool> UpdateAsync(int id, UpdateTagDTO model);
         Task<bool> DeleteAsync(int id);
     }

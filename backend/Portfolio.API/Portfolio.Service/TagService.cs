@@ -32,13 +32,13 @@ namespace Portfolio.Service
 
             return _mapper.Map<TagDTO>(entity);
         }
-        public async Task<bool> CreateAsync(CreateTagDTO model)
+        public async Task<TagDTO> CreateAsync(CreateTagDTO model)
         {
-            if (model == null) return false;
+            if (model == null) return null;
 
             var entity = _mapper.Map<Tag>(model);
             await _repo.AddAsync(entity);
-            return _mapper.Map<TagDTO>(entity) != null;
+            return _mapper.Map<TagDTO>(entity);
         }
         public async Task<bool> UpdateAsync(int id, UpdateTagDTO model)
         {

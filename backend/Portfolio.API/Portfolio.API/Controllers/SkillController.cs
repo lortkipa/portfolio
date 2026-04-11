@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Portfolio.Data.Entities;
+using Portfolio.Service.DTO;
 using Portfolio.Service.DTO.Skill;
 using Portfolio.Service.DTO.Tag;
 using Portfolio.Service.Interfaces;
@@ -44,6 +47,165 @@ namespace Portfolio.API.Controllers
             }).ToList();
 
             return Ok(result);
+        }
+        [Authorize]
+        [HttpPost("Add")]
+        public async Task<ActionResult<SkillDTO>> Add([FromBody] CreateSkillDTO model)
+        {
+            var tag = await _skillServ.CreateAsync(model);
+            if (tag == null)
+            {
+                return BadRequest(new AuthResponseDTO
+                {
+                    Status = false,
+                    Message = "Failed to add skill"
+                });
+            }
+
+            return Ok(tag);
+        }
+        [Authorize]
+        [HttpPut("Update/{id:int}")]
+        public async Task<ActionResult<AuthResponseDTO>> Update(int id, [FromBody] UpdateSkillDTO model)
+        {
+            var skill = await _skillServ.GetByIdAsync(id);
+            if (skill == null)
+            {
+                return NotFound(new AuthResponseDTO
+                {
+                    Status = false,
+                    Message = "Skill doesn't exist"
+                });
+            }
+
+            var res = await _skillServ.UpdateAsync(id, model);
+            if (!res)
+            {
+                return BadRequest(new AuthResponseDTO
+                {
+                    Status = false,
+                    Message = "Failed to update skill"
+                });
+            }
+
+            return Ok(new AuthResponseDTO 
+            {
+                Status = true,
+                Message = "Skill updated"
+            });
+        }
+        [Authorize]
+        [HttpPut("AddTag/{skillId:int}")]
+        public async Task<ActionResult<AuthResponseDTO>> AddTag(int skillId, [FromBody] int tagId)
+        {
+            if (!ModelState.IsValid) return BadRequest(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Invalid request data"
+            });
+
+            var skill = await _skillServ.GetByIdAsync(skillId);
+            if (skill == null) return NotFound(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Skill doesn't exist"
+            });
+
+            var tag = await _tagServ.GetByIdAsync(tagId);
+            if (tag == null) return NotFound(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Tag doesn't exist"
+            });
+
+            var result = await _skillTagServ.AddTag(skillId, tagId);
+            if (result)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    Status = true,
+                    Message = "Tag added successfully"
+                });
+            }
+
+            return BadRequest(new AuthResponseDTO
+            {
+                Status = true,
+                Message = "Failed to add tag"
+            });
+        }
+        [Authorize]
+        [HttpPut("RemoveTag/{skillId:int}")]
+        public async Task<ActionResult<AuthResponseDTO>> RemoveTag(int skillId, [FromBody] int tagId)
+        {
+            if (!ModelState.IsValid) return BadRequest(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Invalid request data"
+            });
+
+            var project = await _skillServ.GetByIdAsync(skillId);
+            if (project == null) return NotFound(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Skill doesn't exist"
+            });
+
+            var tag = await _tagServ.GetByIdAsync(tagId);
+            if (tag == null) return NotFound(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Tag doesn't exist"
+            });
+
+            var result = await _skillTagServ.RemoveTag(skillId, tagId);
+            if (result)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    Status = true,
+                    Message = "Tag removed successfully"
+                });
+            }
+
+            return BadRequest(new AuthResponseDTO
+            {
+                Status = true,
+                Message = "Failed To remove Tag"
+            });
+        }
+        [Authorize]
+        [HttpDelete("Delete/{id:int}")]
+        public async Task<ActionResult<AuthResponseDTO>> Delete(int id)
+        {
+            if (!ModelState.IsValid) return BadRequest(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Invalid request data"
+            });
+
+            var tag = await _skillServ.GetByIdAsync(id);
+            if (tag == null) return NotFound(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Skill doesn't exist"
+            });
+
+            var result = await _skillServ.DeleteAsync(id);
+            if (result)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    Status = true,
+                    Message = "Skill removed successfully"
+                });
+            }
+
+            return BadRequest(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Failed to remove skill"
+            });
         }
     }
 }

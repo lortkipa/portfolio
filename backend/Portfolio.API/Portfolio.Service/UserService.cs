@@ -43,25 +43,25 @@ namespace Portfolio.Service
             var entity = await _repo.GetByEmailAsync(email);
             return _mapper.Map<UserDTO>(entity);
         }
-        public async Task<bool> CreateAsync(CreateUserDTO model)
-        {
-            if (model == null) return false;
+        //public async Task<bool> CreateAsync(CreateUserDTO model)
+        //{
+        //    if (model == null) return false;
 
-            var entity = _mapper.Map<User>(model);
-            await _repo.AddAsync(entity);
-            return _mapper.Map<UserDTO>(entity) != null;
-        }
-        public async Task<bool> UpdateAsync(int id, UpdateUserDTO model)
-        {
-            if (model == null) return false;
+        //    var entity = _mapper.Map<User>(model);
+        //    await _repo.AddAsync(entity);
+        //    return _mapper.Map<UserDTO>(entity) != null;
+        //}
+        //public async Task<bool> UpdateAsync(int id, UpdateUserDTO model)
+        //{
+        //    if (model == null) return false;
 
-            var entity = await _repo.GetByIdAsync(id);
-            if (entity == null) return false;
+        //    var entity = await _repo.GetByIdAsync(id);
+        //    if (entity == null) return false;
 
-            _mapper.Map(model, entity);
-            await _repo.UpdateAsync(entity);
-            return true;
-        }
+        //    _mapper.Map(model, entity);
+        //    await _repo.UpdateAsync(entity);
+        //    return true;
+        //}
         public async Task<bool> DeleteAsync(int id)
         {
             var entity = await _repo.GetByIdAsync(id);

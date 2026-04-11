@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Portfolio.Data.Entities;
+using Portfolio.Service.DTO.About;
 using Portfolio.Service.DTO.Contact;
 using Portfolio.Service.DTO.Project;
 using Portfolio.Service.DTO.ProjectTag;
@@ -49,8 +50,11 @@ namespace Portfolio.Service.Mapping
 
             // User
             CreateMap<User, UserDTO>().ReverseMap();
-            CreateMap<CreateUserDTO, User>();
-            CreateMap<UpdateUserDTO, User>();
+
+            // About
+            CreateMap<About, AboutDTO>().ReverseMap();
+            CreateMap<CreateAboutDTO, About>();
+            CreateMap<UpdateAboutDTO, About>();
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.Service.DTO;
+using Portfolio.Service.DTO.About;
 using Portfolio.Service.DTO.Contact;
 using Portfolio.Service.DTO.Tag;
 using Portfolio.Service.DTO.User;
@@ -16,32 +17,43 @@ namespace Portfolio.API.Controllers
     {
         private readonly IUserService _userServ;
         private readonly IContactService _contactServ;
+        private readonly IAboutService _aboutServ;
         private readonly IConfiguration _config;
-        public UserController(IUserService userServ, IContactService contactServ, IConfiguration config)
+        public UserController(IAboutService aboutServ, IUserService userServ, IContactService contactServ, IConfiguration config)
         {
+            _aboutServ = aboutServ;
             _userServ = userServ;
             _contactServ = contactServ;
             _config = config;
         }
 
         [HttpGet("Profile")]
-        public async Task<IActionResult> Profile()
+        public async Task<ActionResult<UserProfileDTO>> Profile()
         {
             var user = await _userServ.GetByIdAsync(1);
             var contact = await _contactServ.GetByIdAsync(user.ContactId);
+            var about = await _aboutServ.GetByIdAsync(user.AboutId);
 
             var result = new UserProfileDTO
             {
                 Id = user.Id,
-                FullName = user.FullName,
                 Contact = new ContactDTO
                 {
-                    Id  = contact.Id,
+                    Id = contact.Id,
                     Email = contact.Email,
                     PhoneNumber = contact.PhoneNumber,
                     Location = contact.Location,
                     GithubLink = contact.GithubLink,
                     LinkedinLink = contact.LinkedinLink,
+                },
+                About = new AboutDTO
+                {
+                    Id = about.Id,
+                    FullName = about.FullName,
+                    JobTitle = about.JobTitle,
+                    Bio = about.Bio,
+                    StatusBadge = about.StatusBadge,
+                    FunBadge = about.FunBadge
                 }
             };
 
@@ -114,5 +126,39 @@ namespace Portfolio.API.Controllers
                 Message = "Failed To Update Contact."
             });
         }
+        [Authorize]
+        [HttpPut("UpdateProfileAbout/{aboutId:int}")]
+        public async Task<ActionResult<AuthResponseDTO>> UpdateProfileAbout(int aboutId, UpdateAboutDTO model)
+        {
+            if (!ModelState.IsValid) return BadRequest(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "Invalid Request Data"
+            });
+
+            var contact = await _aboutServ.GetByIdAsync(aboutId);
+            if (contact == null) return NotFound(new AuthResponseDTO
+            {
+                Status = false,
+                Message = "About info not found."
+            });
+
+            var result = await _aboutServ.UpdateAsync(aboutId, model);
+            if (result)
+            {
+                return Ok(new AuthResponseDTO
+                {
+                    Status = true,
+                    Message = "About info updated successfully."
+                });
+            }
+
+            return Ok(new AuthResponseDTO
+            {
+                Status = true,
+                Message = "Failed to update about info."
+            });
+        }
+
     }
 }

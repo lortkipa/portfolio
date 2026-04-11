@@ -19,7 +19,7 @@ export class Header {
   constructor(private userServ: UserService) {
     this.userServ.getProfile().subscribe(data => {
       this.profile.set(data);
-      this.firstName.set(data.fullName.split(' ')[0])
+      this.firstName.set(data.about.fullName.split(' ')[0])
     });
 
     effect(() => {

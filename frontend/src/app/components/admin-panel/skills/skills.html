@@ -1,0 +1,115 @@
+<div class="panel active" id="panel-projects">
+    <!-- <div class="preview-bar">
+        <span class="note">🗂 Projects Section</span>
+        <span>Tags come from the shared Tags table — consistent with Skills.</span>
+    </div> -->
+    <div class="add-row"><button class="btn btn-primary"
+            (click)="addMode.set(true); selectedSkill.set({id: 0, icon: '', title: '', tags: []})">+
+            Add Project</button></div>
+    <div class="item-list" id="projectList">
+        <div class="item-card" *ngFor="let skill of skills()">
+            <div class="item-card-icon">{{skill.icon}}
+            </div>
+            <div class="item-card-body">
+                <div class="item-card-title">{{skill.title}}</div>
+                <div class="mini-tags">
+                    <span class="mini-tag" *ngFor="let tag of skill.tags">{{tag.name}}</span>
+                </div>
+            </div>
+            <div class="item-card-actions">
+                <button class="btn btn-ghost" (click)="editMode.set(true); selectedSkill.set({...skill, tags: [...skill.tags]})">✏️
+                    Edit</button>
+                <button class="btn btn-danger" (click)="removeSkill(skill.id)">🗑</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="skillModal" [class.open]="addMode() || editMode()">
+  <div class="modal">
+
+    <div class="modal-header">
+      <div class="modal-title">
+        {{ addMode() ? 'Add' : 'Edit' }} Skill
+      </div>
+      <button class="modal-close"
+              (click)="addMode.set(false); editMode.set(false); shouldAddTagIds.set([]); shouldRemoveTagIds.set([])">
+        ×
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- Skill Title -->
+      <div class="field" style="margin-bottom:1rem">
+        <label>Title</label>
+        <input type="text"
+               placeholder="My Awesome Skill"
+               [(ngModel)]="selectedSkill().title" />
+      </div>
+
+      <!-- Icon -->
+      <div class="field" style="margin-bottom:1rem">
+        <label>Emoji / Icon</label>
+        <input type="text"
+               placeholder="🚀"
+               maxlength="4"
+               [(ngModel)]="selectedSkill().icon" />
+      </div>
+
+      <!-- Tags -->
+      <div class="field" style="margin-bottom:1rem">
+        <label>Tags</label>
+
+        <div class="tag-picker">
+
+          <!-- Selected tags -->
+          <div class="tag-selected-bar">
+            <span class="tag-pill"
+                  *ngFor="let tag of visibleSelectedTags()">
+              {{ tag.name }}
+              <span class="remove"
+                    (click)="toggleTag(tag.id)">
+                ×
+              </span>
+            </span>
+          </div>
+
+          <!-- Search -->
+          <div class="tag-search-row">
+            <input type="text"
+                   placeholder="Search tags"
+                   [ngModel]="tagSearch()"
+                   (ngModelChange)="tagSearch.set($event)" />
+          </div>
+
+          <!-- Tag cloud -->
+          <div class="tag-cloud">
+            <span class="tag-cloud-item"
+                  *ngFor="let tag of filteredTags()"
+                  [class.selected]="(selectedSkill().tags.some(t => t.id === tag.id) || shouldAddTagIds().includes(tag.id)) && !shouldRemoveTagIds().includes(tag.id)"
+                  (click)="toggleTag(tag.id)">
+              {{ tag.name }}
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer FIXED inside modal -->
+    <div class="modal-footer">
+      <button class="btn btn-ghost"
+              (click)="addMode.set(false); editMode.set(false); shouldAddTagIds.set([]); shouldRemoveTagIds.set([])">
+        Cancel
+      </button>
+
+      <button class="btn btn-primary"
+              (click)="saveSkill()">
+        Save
+      </button>
+    </div>
+
+  </div>
+</div>

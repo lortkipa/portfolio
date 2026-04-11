@@ -30,11 +30,11 @@
     <div class="modal">
         <div class="modal-header">
             <div class="modal-title" id="projectModalTitle">{{addMode() ? 'Add' : 'Edit'}} Project</div>
-            <button class="modal-close" (click)="addMode.set(false); editMode.set(false)">×</button>
+            <button class="modal-close" (click)="addMode.set(false); editMode.set(false); shouldAddTagIds.set([]); shouldRemoveTagIds.set([])">×</button>
         </div>
         <div class="modal-body">
             <div class="field" style="margin-bottom:1rem">
-                <label>Project Title</label>
+                <label>Title</label>
                 <input type="text" id="proj-title" placeholder="My Awesome Project"
                     [(ngModel)]="selectedProject().title" [value]="selectedProject().title">
             </div>
@@ -93,8 +93,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-ghost" (click)="addMode.set(false); editMode.set(false)">Cancel</button>
-            <button class="btn btn-primary" (click)="saveProject()">Save Project</button>
+            <button class="btn btn-ghost" (click)="addMode.set(false); editMode.set(false); shouldAddTagIds.set([]); shouldRemoveTagIds.set([])">Cancel</button>
+            <button class="btn btn-primary" (click)="saveProject()">Project</button>
         </div>
     </div>
 </div>

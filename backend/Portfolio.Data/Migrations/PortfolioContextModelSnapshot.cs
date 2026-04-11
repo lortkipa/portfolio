@@ -21,6 +21,55 @@ namespace Portfolio.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Portfolio.Data.Entities.About", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Bio")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("FunBadge")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("JobTitle")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("StatusBadge")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Abouts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Bio = "I design and build thoughtful digital products — from responsive interfaces to robust backend systems. Passionate about clean code, great UX, and technology that actually matters.",
+                            FullName = "Nikoloz Lortkipanidze",
+                            FunBadge = "Building cool things",
+                            JobTitle = "Full-Stack Developer",
+                            StatusBadge = "Open to work"
+                        });
+                });
+
             modelBuilder.Entity("Portfolio.Data.Entities.Contact", b =>
                 {
                     b.Property<int>("Id")
@@ -115,24 +164,6 @@ namespace Portfolio.Data.Migrations
                             Theme = 1,
                             Title = "Personal Portfolio Website",
                             githubLink = "https://github.com/lortkipa/portfolio"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Desc = "Full-stack booking platform for managing restaurant reservations and customer scheduling in real time.",
-                            Icon = "🛒",
-                            Theme = 3,
-                            Title = "Restaurant Reservation System",
-                            githubLink = "https://github.com/lortkipa/Restaurant-Reservation-System"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Desc = "Custom experimental programming language developed from scratch in x64 assembly.",
-                            Icon = "🧩",
-                            Theme = 2,
-                            Title = "Blang — Programming Language",
-                            githubLink = "https://github.com/lortkipa/blang"
                         });
                 });
 
@@ -164,72 +195,6 @@ namespace Portfolio.Data.Migrations
                             Id = 1,
                             ProjectId = 1,
                             TagId = 20
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ProjectId = 1,
-                            TagId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ProjectId = 1,
-                            TagId = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ProjectId = 1,
-                            TagId = 3
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ProjectId = 1,
-                            TagId = 4
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ProjectId = 2,
-                            TagId = 20
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ProjectId = 2,
-                            TagId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ProjectId = 2,
-                            TagId = 2
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ProjectId = 2,
-                            TagId = 3
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ProjectId = 2,
-                            TagId = 4
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ProjectId = 3,
-                            TagId = 22
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ProjectId = 3,
-                            TagId = 23
                         });
                 });
 
@@ -607,20 +572,21 @@ namespace Portfolio.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AboutId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ContactId")
                         .HasColumnType("int");
 
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
                     b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AboutId")
+                        .IsUnique();
 
                     b.HasIndex("ContactId")
                         .IsUnique();
@@ -631,8 +597,8 @@ namespace Portfolio.Data.Migrations
                         new
                         {
                             Id = 1,
+                            AboutId = 1,
                             ContactId = 1,
-                            FullName = "Nikoloz Lortkipanidze",
                             PasswordHash = "JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk="
                         });
                 });
@@ -677,13 +643,26 @@ namespace Portfolio.Data.Migrations
 
             modelBuilder.Entity("Portfolio.Data.Entities.User", b =>
                 {
+                    b.HasOne("Portfolio.Data.Entities.About", "About")
+                        .WithOne("User")
+                        .HasForeignKey("Portfolio.Data.Entities.User", "AboutId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Portfolio.Data.Entities.Contact", "Contact")
                         .WithOne("User")
                         .HasForeignKey("Portfolio.Data.Entities.User", "ContactId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("About");
+
                     b.Navigation("Contact");
+                });
+
+            modelBuilder.Entity("Portfolio.Data.Entities.About", b =>
+                {
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Portfolio.Data.Entities.Contact", b =>

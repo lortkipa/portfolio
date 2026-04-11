@@ -1,1 +1,37 @@
-<p>about-me works!</p>
+<div class="panel" id="panel-about">
+    <!-- <div class="preview-bar"><span class="note">✏️ About / Hero Section</span><span>Changes apply to the top hero
+            section of your portfolio.</span></div> -->
+    <div class="form-section">
+        <div class="form-section-title">👤 Personal Info</div>
+        <div class="field-row">
+            <div class="field"><label>Full Name</label>
+                <input type="text" id="about-name" placeholder="Alex Morgan" [(ngModel)]="profile().about.fullName" />
+            </div>
+            <div class="field"><label>Job Title</label>
+                <input type="text" id="about-title" placeholder="Full-Stack Developer"
+                    [(ngModel)]="profile().about.jobTitle" />
+            </div>
+        </div>
+        <div class="field-row full">
+            <div class="field"><label>Bio</label><textarea id="about-bio" rows="4"
+                    [(ngModel)]="profile().about.bio"></textarea></div>
+        </div>
+        <div class="field-row">
+            <div class="field"><label>Status Badge</label>
+                <input type="text" id="about-badge1" placeholder="Open to work" [(ngModel)]="profile().about.statusBadge"/>
+            </div>
+            <div class="field"><label>Fun Badge</label>
+                <input type="text" id="about-badge2" placeholder="Building cool things" [(ngModel)]="profile().about.funBadge"/>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="form-section">
+        <div class="form-section-title">🔗 Hero Buttons</div>
+        <div class="field-row">
+            <div class="field"><label>Primary Button</label><input type="text" id="about-btn1" /></div>
+            <div class="field"><label>Secondary Button</label><input type="text" id="about-btn2" /></div>
+        </div>
+    </div> -->
+    <div style="display:flex;justify-content:flex-end"><button class="btn btn-primary" (click)="save()">💾 Save</button>
+    </div>
+</div>

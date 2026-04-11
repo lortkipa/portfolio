@@ -1,5 +1,7 @@
 import { Component, AfterViewInit, ElementRef, inject, signal } from '@angular/core';
 import { Globals } from '../../../services/globals';
+import { UserService } from '../../../services/user-service';
+import { UserProfileModel } from '../../../models/user';
 
 @Component({
   selector: 'app-hero',
@@ -9,14 +11,30 @@ import { Globals } from '../../../services/globals';
   styleUrl: './hero.scss',
 })
 export class Hero implements AfterViewInit {
-  role = signal<string>('Full‑Stack Developer')
-  bio = signal<string>(`I design and build thoughtful digital products — from responsive
-          interfaces to robust backend systems. Passionate about clean code,
-          great UX, and technology that actually matters.`);
-  badge1 = signal<string>('Open to work')
-  badge2 = signal<string>('☕ Building cool things')
+  profile = signal<UserProfileModel>({
+    id: 0,
+    contact: {
+      id: 0,
+      email: '',
+      location: '',
+      phoneNumber: '',
+      githubLink: '',
+      linkedinLink: ''
+    },
+    about: {
+      id: 0,
+      fullName: '',
+      jobTitle: '',
+      bio: '',
+      statusBadge: '',
+      funBadge: ''
+    }
+  })
 
-  constructor(public globals: Globals) {
+  constructor(private userServ: UserService) {
+    this.userServ.getProfile().subscribe((data) => {
+      this.profile.set(data)
+    })
   }
 
   // Inject ElementRef to safely access the component's DOM

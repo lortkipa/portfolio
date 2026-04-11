@@ -13,14 +13,14 @@ namespace Portfolio.Data.Entities
         public int Id { get; set; }
         [Required]
         public int ContactId { get; set; }
+        public int AboutId { get; set; }
         [Required]
-        [MaxLength(25)]
-        public string FullName { get; set; } = null!;
-        [Required]
-        [MaxLength(100)]
+        [MaxLength(200)]
         public string PasswordHash { get; set; } = null!;
 
         // User => Contact
         public Contact? Contact { get; set; }
+        // User => About
+        public About? About { get; set; }
     }
 }

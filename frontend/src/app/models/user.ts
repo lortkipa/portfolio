@@ -7,10 +7,19 @@ export interface ContactModel {
     linkedinLink: string
 }
 
-export interface UserProfileModel {
+export interface AboutModel {
     id: number
     fullName: string
+    jobTitle: string
+    bio: string
+    statusBadge: string
+    funBadge: string
+}
+
+export interface UserProfileModel {
+    id: number
     contact: ContactModel
+    about: AboutModel
 }
 
 export interface LoginUserModel {

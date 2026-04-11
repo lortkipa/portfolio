@@ -115,41 +115,10 @@ namespace Portfolio.Data
                     Theme = ProjectThemes.Orange,
                     githubLink = "https://github.com/lortkipa/portfolio",
                     demoLink = null
-                },
-                new Project
-                {
-                    Id = 2,
-                    Icon = "🛒",
-                    Title = "Restaurant Reservation System",
-                    Desc = "Full-stack booking platform for managing restaurant reservations and customer scheduling in real time.",
-                    Theme = ProjectThemes.Green,
-                    githubLink = "https://github.com/lortkipa/Restaurant-Reservation-System",
-                    demoLink = null
-                },
-                new Project
-                {
-                    Id = 3,
-                    Icon = "🧩",
-                    Title = "Blang — Programming Language",
-                    Desc = "Custom experimental programming language developed from scratch in x64 assembly.",
-                    Theme = ProjectThemes.Blue,
-                    githubLink = "https://github.com/lortkipa/blang",
-                    demoLink = null
                 }
             );
             modelBuilder.Entity<ProjectTag>().HasData(
-                new ProjectTag { Id = 1, ProjectId = 1, TagId = 20 },
-                new ProjectTag { Id = 2, ProjectId = 1, TagId = 1 },
-                new ProjectTag { Id = 3, ProjectId = 1, TagId = 2 },
-                new ProjectTag { Id = 4, ProjectId = 1, TagId = 3 },
-                new ProjectTag { Id = 5, ProjectId = 1, TagId = 4 },
-                new ProjectTag { Id = 6, ProjectId = 2, TagId = 20 },
-                new ProjectTag { Id = 7, ProjectId = 2, TagId = 1 },
-                new ProjectTag { Id = 8, ProjectId = 2, TagId = 2 },
-                new ProjectTag { Id = 9, ProjectId = 2, TagId = 3 },
-                new ProjectTag { Id = 10, ProjectId = 2, TagId = 4 },
-                new ProjectTag { Id = 11, ProjectId = 3, TagId = 22 },
-                new ProjectTag { Id = 12, ProjectId = 3, TagId = 23 }
+                new ProjectTag { Id = 1, ProjectId = 1, TagId = 20 }
             );
             modelBuilder.Entity<Contact>().HasData(
                 new Contact 
@@ -162,12 +131,23 @@ namespace Portfolio.Data
                     LinkedinLink = "https://www.linkedin.com/in/nikoloz-lortkipanidze-2b4263329/"
                 }
             );
+            modelBuilder.Entity<About>().HasData(
+                new About 
+                {
+                    Id = 1,
+                    FullName = "Nikoloz Lortkipanidze",
+                    JobTitle = "Full-Stack Developer",
+                    Bio = "I design and build thoughtful digital products — from responsive interfaces to robust backend systems. Passionate about clean code, great UX, and technology that actually matters.",
+                    StatusBadge = "Open to work",
+                    FunBadge = "Building cool things"
+                }
+            );
             modelBuilder.Entity<User>().HasData(
                 new User 
                 {
                     Id = 1,
                     ContactId = 1,
-                    FullName = "Nikoloz Lortkipanidze",
+                    AboutId = 1,
                     PasswordHash = passwordHash
                 }
             );

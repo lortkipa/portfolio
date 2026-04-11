@@ -32,13 +32,13 @@ namespace Portfolio.Service
 
             return _mapper.Map<SkillDTO>(entity);
         }
-        public async Task<bool> CreateAsync(CreateSkillDTO model)
+        public async Task<SkillDTO> CreateAsync(CreateSkillDTO model)
         {
-            if (model == null) return false;
+            if (model == null) return null;
 
             var entity = _mapper.Map<Skill>(model);
             await _repo.AddAsync(entity);
-            return _mapper.Map<SkillDTO>(entity) != null;
+            return _mapper.Map<SkillDTO>(entity);
         }
         public async Task<bool> UpdateAsync(int id, UpdateSkillDTO model)
         {

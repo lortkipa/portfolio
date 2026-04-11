@@ -109,7 +109,10 @@ export class Projects {
       const removeTagReqs = this.shouldRemoveTagIds().map(id => this.projectServ.removeTag(token, project.id, id));
 
       forkJoin([updateReq, ...addTagReqs, ...removeTagReqs]).subscribe({
-        next: () => this.toastServ.show('Project updated', 'success'),
+        next: () => {
+          this.toastServ.show('Project updated', 'success')
+          this.finalizeSave()
+        },
         error: (err) => this.toastServ.show('Failed to update project', 'error')
       });
 
@@ -124,12 +127,13 @@ export class Projects {
           return tagReqs.length > 0 ? forkJoin(tagReqs) : of(newProject);
         })
       ).subscribe({
-        next: (data) => this.toastServ.show('Project added', 'success'),
+        next: (data) => {
+          this.toastServ.show('Project added', 'success')
+          this.finalizeSave()
+        },
         error: (err) => this.toastServ.show('Failed to add project', 'error')
       });
     }
-
-    this.finalizeSave()
   }
 
   removeProject(id: number) {

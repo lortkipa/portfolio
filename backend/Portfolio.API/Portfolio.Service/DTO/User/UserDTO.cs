@@ -9,6 +9,6 @@ namespace Portfolio.Service.DTO.User
     {
         public int Id { get; set; }
         public int ContactId { get; set; }
-        public string FullName { get; set; } = null!;
+        public int AboutId { get; set; }
     }
 }

@@ -13,6 +13,23 @@ namespace Portfolio.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Abouts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FullName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    JobTitle = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    Bio = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    StatusBadge = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    FunBadge = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Abouts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Contacts",
                 columns: table => new
                 {
@@ -81,12 +98,18 @@ namespace Portfolio.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ContactId = table.Column<int>(type: "int", nullable: false),
-                    FullName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    AboutId = table.Column<int>(type: "int", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Abouts_AboutId",
+                        column: x => x.AboutId,
+                        principalTable: "Abouts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Users_Contacts_ContactId",
                         column: x => x.ContactId,
@@ -148,6 +171,11 @@ namespace Portfolio.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Abouts",
+                columns: new[] { "Id", "Bio", "FullName", "FunBadge", "JobTitle", "StatusBadge" },
+                values: new object[] { 1, "I design and build thoughtful digital products — from responsive interfaces to robust backend systems. Passionate about clean code, great UX, and technology that actually matters.", "Nikoloz Lortkipanidze", "Building cool things", "Full-Stack Developer", "Open to work" });
+
+            migrationBuilder.InsertData(
                 table: "Contacts",
                 columns: new[] { "Id", "Email", "GithubLink", "LinkedinLink", "Location", "PhoneNumber" },
                 values: new object[] { 1, "nikusha191208@gmail.com", "https://github.com/lortkipa", "https://www.linkedin.com/in/nikoloz-lortkipanidze-2b4263329/", "Tbilisi, Georgia", "+995 575 78 03 23" });
@@ -155,12 +183,7 @@ namespace Portfolio.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Projects",
                 columns: new[] { "Id", "Desc", "Icon", "Theme", "Title", "demoLink", "githubLink" },
-                values: new object[,]
-                {
-                    { 1, "Responsive developer portfolio built to showcase projects, skills, and professional experience with modern UI animations and clean design.", "🌐", 1, "Personal Portfolio Website", null, "https://github.com/lortkipa/portfolio" },
-                    { 2, "Full-stack booking platform for managing restaurant reservations and customer scheduling in real time.", "🛒", 3, "Restaurant Reservation System", null, "https://github.com/lortkipa/Restaurant-Reservation-System" },
-                    { 3, "Custom experimental programming language developed from scratch in x64 assembly.", "🧩", 2, "Blang — Programming Language", null, "https://github.com/lortkipa/blang" }
-                });
+                values: new object[] { 1, "Responsive developer portfolio built to showcase projects, skills, and professional experience with modern UI animations and clean design.", "🌐", 1, "Personal Portfolio Website", null, "https://github.com/lortkipa/portfolio" });
 
             migrationBuilder.InsertData(
                 table: "Skills",
@@ -208,21 +231,7 @@ namespace Portfolio.Data.Migrations
             migrationBuilder.InsertData(
                 table: "ProjectTags",
                 columns: new[] { "Id", "ProjectId", "TagId" },
-                values: new object[,]
-                {
-                    { 1, 1, 20 },
-                    { 2, 1, 1 },
-                    { 3, 1, 2 },
-                    { 4, 1, 3 },
-                    { 5, 1, 4 },
-                    { 6, 2, 20 },
-                    { 7, 2, 1 },
-                    { 8, 2, 2 },
-                    { 9, 2, 3 },
-                    { 10, 2, 4 },
-                    { 11, 3, 22 },
-                    { 12, 3, 23 }
-                });
+                values: new object[] { 1, 1, 20 });
 
             migrationBuilder.InsertData(
                 table: "SkillTags",
@@ -256,8 +265,8 @@ namespace Portfolio.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "ContactId", "FullName", "PasswordHash" },
-                values: new object[] { 1, 1, "Nikoloz Lortkipanidze", "JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk=" });
+                columns: new[] { "Id", "AboutId", "ContactId", "PasswordHash" },
+                values: new object[] { 1, 1, 1, "JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk=" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectTags_ProjectId",
@@ -292,6 +301,12 @@ namespace Portfolio.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_AboutId",
+                table: "Users",
+                column: "AboutId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_ContactId",
                 table: "Users",
                 column: "ContactId",
@@ -318,6 +333,9 @@ namespace Portfolio.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tags");
+
+            migrationBuilder.DropTable(
+                name: "Abouts");
 
             migrationBuilder.DropTable(
                 name: "Contacts");

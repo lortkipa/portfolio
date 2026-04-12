@@ -12,7 +12,7 @@ using Portfolio.Data;
 namespace Portfolio.Data.Migrations
 {
     [DbContext(typeof(PortfolioContext))]
-    [Migration("20260412173804_v1")]
+    [Migration("20260412195303_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -148,6 +148,9 @@ namespace Portfolio.Data.Migrations
                         .HasMaxLength(100)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsSeen")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Subject")
                         .IsRequired()

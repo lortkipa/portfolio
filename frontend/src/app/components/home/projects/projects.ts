@@ -15,9 +15,21 @@ export class Projects {
   projects = signal<ProjectModel[]>([]);
   private el = inject(ElementRef);
 
-  constructor(public projectThemeServ : ProjectThemeService, private projectServ: ProjectService) {
+  constructor(public projectThemeServ: ProjectThemeService, private projectServ: ProjectService) {
     // Fetch projects
-    this.projectServ.getAll().subscribe((data) => this.projects.set(data));
+    this.projectServ.getAll().subscribe((data) => {
+      const sorted = data
+        .slice()
+        .sort((a, b) => a.title.localeCompare(b.title))
+        .map(project => ({
+          ...project,
+          tags: (project.tags ?? [])
+            .slice()
+            .sort((a, b) => a.name.localeCompare(b.name))
+        }));
+
+      this.projects.set(sorted);
+    });
 
     // Run observer after projects are set
     effect(() => {

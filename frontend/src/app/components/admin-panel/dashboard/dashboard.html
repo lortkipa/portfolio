@@ -1,0 +1,57 @@
+<div class="panel active" id="panel-dashboard">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Total Tags</div>
+            <div class="stat-value" id="statTags">{{tagCount()}}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Skill Categories</div>
+            <div class="stat-value" id="statSkills">{{skillCount()}}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Projects</div>
+            <div class="stat-value" id="statProjects">{{projectCount()}}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Messages</div>
+            <div class="stat-value" id="statMessages">{{msgCount()}}</div>
+        </div>
+    </div>
+    <div class="form-section">
+        <div class="form-section-title">🕐 Recent Messages</div>
+        <div id="dashboardMessages">
+            <div id="messageList">
+
+                <!-- [ngClass]="msg.isSeen ? '' : 'unread'" -->
+                <div class="message-card" *ngFor="let msg of messages()" style="cursor:pointer">
+
+                    <div class="message-meta">
+                        <span class="message-from">{{msg.fullName}}</span>
+                        <span class="message-time">{{msg.date | date:'M/d/yyyy, HH:mm'}}</span>
+                    </div>
+
+                    <div class="message-email">{{msg.email}}</div>
+                    <div class="message-subject">{{msg.subject}}</div>
+                    <div class="message-body">{{msg.content}}</div>
+                </div>
+
+            </div>
+
+            <div class="empty-state" *ngIf="messages().length == 0">
+                <div class="ico">📭</div>No messages yet.
+            </div>
+        </div>
+    </div>
+    <!-- <div class="form-section">
+        <div class="form-section-title">⚡ Quick Actions</div>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap">
+            <button class="btn btn-ghost" onclick="switchPanel('about')">✏️ Edit Bio</button>
+            <button class="btn btn-ghost" onclick="switchPanel('tags')">🏷️ Manage Tags</button>
+            <button class="btn btn-ghost" onclick="switchPanel('skills');setTimeout(openSkillModal,100)">+ Add
+                Skill</button>
+            <button class="btn btn-ghost" onclick="switchPanel('projects');setTimeout(openProjectModal,100)">+ Add
+                Project</button>
+            <button class="btn btn-ghost" onclick="switchPanel('messages')">✉️ Messages</button>
+        </div>
+    </div> -->
+</div>

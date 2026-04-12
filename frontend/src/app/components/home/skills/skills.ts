@@ -15,13 +15,23 @@ export class Skills {
   skills = signal<SkillModel[]>([]);
   private el = inject(ElementRef);
 
-  constructor(private skillServ : SkillsService) {
+  constructor(private skillServ: SkillsService) {
     this.skillServ.getAll().subscribe((data) => {
-      this.skills.set(data);
+      const sorted = data
+        .slice()
+        .sort((a, b) => a.title.localeCompare(b.title))
+        .map(skill => ({
+          ...skill,
+          tags: (skill.tags ?? [])
+            .slice()
+            .sort((a, b) => a.name.localeCompare(b.name))
+        }));
+
+      this.skills.set(sorted);
     });
 
     effect(() => {
-      const currentSkills = this.skills(); 
+      const currentSkills = this.skills();
       if (currentSkills.length > 0) {
         setTimeout(() => this.setupObserver(), 0);
       }

@@ -46,5 +46,45 @@ namespace Portfolio.API.Controllers
 
             return Ok(msg);
         }
+        [Authorize]
+        [HttpPut("MarkAsSeen/{id:int}")]
+        public async Task<AuthResponseDTO> MarkAsSeen(int id)
+        {
+            var res = await _msgServ.MarkAsSeen(id);
+            if (!res)
+            {
+                new AuthResponseDTO
+                {
+                    Status = false,
+                    Message = "Failed to mark message as seen"
+                };
+            }
+
+            return new AuthResponseDTO
+            {
+                Status = true,
+                Message = "Message marked as seen"
+            };
+        }
+        [Authorize]
+        [HttpDelete("Delete/{id:int}")]
+        public async Task<AuthResponseDTO> Delete(int id)
+        {
+            var res = await _msgServ.DeleteAsync(id);
+            if (!res)
+            {
+                new AuthResponseDTO
+                {
+                    Status = false,
+                    Message = "Failed to delete message"
+                };
+            }
+
+            return new AuthResponseDTO
+            {
+                Status = true,
+                Message = "Message deleted successfully"
+            };
+        }
     }
 }

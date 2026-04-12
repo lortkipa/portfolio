@@ -27,5 +27,7 @@ namespace Portfolio.Data.Entities
         [Required]
         [MaxLength(5000)]
         public string Content { get; set; } = null!;
+        [Required]
+        public bool IsSeen { get; set; }
     }
 }

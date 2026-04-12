@@ -28,6 +28,7 @@ export class Contact {
   isSubmitting = signal<boolean>(false);
   showSuccess = signal<boolean>(false);
   showError = signal<boolean>(false);
+  showEmailError = signal<boolean>(false)
 
   msg = signal<MsgModel>({
     id: 0,
@@ -35,7 +36,8 @@ export class Contact {
     fullName: '',
     email: '',
     subject: '',
-    content: ''
+    content: '',
+          isSeen: false
   })
 
   profile = signal<UserProfileModel | null>(null);
@@ -76,6 +78,16 @@ export class Contact {
   sendMsg(): void {
     this.isSubmitting.set(true);
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.msg().email)) {
+      this.showEmailError.set(true)
+      setTimeout(() => {
+        this.isSubmitting.set(false)
+        this.showEmailError.set(false);
+      }, 2500);
+      return;
+    }
+
     this.msgServ.send(this.msg()).subscribe({
       next: () => {
         this.showSuccess.set(true)
@@ -85,7 +97,8 @@ export class Contact {
           fullName: '',
           email: '',
           subject: '',
-          content: ''
+          content: '',
+          isSeen: false
         })
         setTimeout(() => {
           this.isSubmitting.set(false)
@@ -94,13 +107,14 @@ export class Contact {
       },
       error: () => {
         this.showError.set(true)
-         this.msg.set({
+        this.msg.set({
           id: 0,
           date: '',
           fullName: '',
           email: '',
           subject: '',
-          content: ''
+          content: '',
+          isSeen: false
         })
         setTimeout(() => {
           this.isSubmitting.set(false)

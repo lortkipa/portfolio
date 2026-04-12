@@ -159,6 +159,5 @@ namespace Portfolio.API.Controllers
                 Message = "Failed to update about info."
             });
         }
-
     }
 }

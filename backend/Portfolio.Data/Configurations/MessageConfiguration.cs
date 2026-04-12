@@ -31,6 +31,8 @@ namespace Portfolio.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(5000)
                 .IsUnicode(true);
+            builder.Property(m => m.IsSeen)
+                .IsRequired();
         }
     }
 }

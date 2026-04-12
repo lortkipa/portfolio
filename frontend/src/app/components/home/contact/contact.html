@@ -64,6 +64,10 @@
             ❌ &nbsp; Oops! Something went wrong. Please try again.
           </div>
 
+          <div class="form-error" [class.show]="showEmailError()">
+            ❌ &nbsp; Invalid email address.
+          </div>
+
           <button type="submit" class="btn-submit" (click)="sendMsg()"
             [disabled]="!msg().fullName || !msg().email || !msg().subject || !msg().content">
             {{ 'Send Message →' }}
@@ -75,4 +79,3 @@
   </div>
 
 </section>
- 

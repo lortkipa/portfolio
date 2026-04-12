@@ -12,6 +12,7 @@ namespace Portfolio.Service.Interfaces
         Task<MessageDTO> GetByIdAsync(int id);
         Task<MessageDTO> CreateAsync(CreateMessageDTO model);
         Task<bool> UpdateAsync(int id, UpdateMessageDTO model);
+        Task<bool> MarkAsSeen(int id);
         Task<bool> DeleteAsync(int id);
     }
 }

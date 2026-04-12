@@ -1,25 +1,25 @@
 <div class="panel" id="panel-messages">
-    <!-- <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;gap:.6rem">
-        <button class="btn btn-ghost" onclick="markAllRead()">✓ Mark all read</button>
-        <button class="btn btn-danger" onclick="clearMessages()">🗑 Clear all</button>
-    </div> -->
 
-    <div id="messageList">
+  <div id="messageList">
 
-        <!-- 3. Read — freelance inquiry -->
-        <div class="message-card" style="cursor:pointer" *ngFor="let msg of messages()">
-            <div class="message-meta">
-                <span class="message-from">{{msg.fullName}}</span>
-                <span class="message-time">{{msg.date | date:'M/d/yyyy, HH:mm'}}</span>
-                <!-- <span class="message-time">4/9/2026, 11:05 AM</span> -->
-            </div>
-            <div class="message-email">{{msg.email}}</div>
-            <div class="message-subject">{{msg.subject}}</div>
-            <div class="message-body">{{msg.content}}</div>
-        </div>
+    <!-- [ngClass]="msg.isSeen ? '' : 'unread'" -->
+    <div class="message-card"
+         *ngFor="let msg of messages()"
+         style="cursor:pointer">
 
+      <div class="message-meta">
+        <span class="message-from">{{msg.fullName}}</span>
+        <span class="message-time">{{msg.date | date:'M/d/yyyy, HH:mm'}}</span>
+      </div>
+
+      <div class="message-email">{{msg.email}}</div>
+      <div class="message-subject">{{msg.subject}}</div>
+      <div class="message-body">{{msg.content}}</div>
     </div>
-    <div class="empty-state" *ngIf="messages().length == 0">
-        <div class="ico">📭</div>No messages yet.
-    </div>
+
+  </div>
+
+  <div class="empty-state" *ngIf="messages().length == 0">
+    <div class="ico">📭</div>No messages yet.
+  </div>
 </div>

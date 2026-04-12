@@ -39,6 +39,7 @@ namespace Portfolio.Service
 
             var entity = _mapper.Map<Message>(model);
             entity.Date = DateTime.Now;
+            entity.IsSeen = false;
             await _repo.AddAsync(entity);
             return _mapper.Map<MessageDTO>(entity);
         }
@@ -50,6 +51,16 @@ namespace Portfolio.Service
             if (entity == null) return false;
 
             _mapper.Map(model, entity);
+            await _repo.UpdateAsync(entity);
+            return true;
+        }
+        public async Task<bool> MarkAsSeen(int id)
+        {
+            var entity = await _repo.GetByIdAsync(id);
+            if (entity == null) return false;
+
+            entity.IsSeen = true;
+
             await _repo.UpdateAsync(entity);
             return true;
         }

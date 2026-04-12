@@ -1,1 +1,27 @@
-<p>settings works!</p>
+<div class="panel" id="panel-settings">
+    <div class="form-section">
+        <div class="form-section-title">🌐 Contact &amp; Links</div>
+        <div class="field-row">
+            <div class="field"><label>Email</label>
+                <input type="email" id="set-email" [(ngModel)]="contact().email" />
+            </div>
+            <div class="field"><label>Phone Number</label>
+                <input type="tel" id="set-location" [(ngModel)]="contact().phoneNumber" />
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field"><label>LinkedIn URL</label>
+                <input type="url" id="set-linkedin" [(ngModel)]="contact().linkedinLink" />
+            </div>
+            <div class="field"><label>GitHub URL</label>
+                <input type="url" id="set-github" [(ngModel)]="contact().githubLink" />
+            </div>
+        </div>
+        <div class="field"><label>Location</label>
+            <input type="url" id="set-linkedin" [(ngModel)]="contact().location" />
+        </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end">
+        <button class="btn btn-primary" (click)="saveSettings()">💾 Save Settings</button>
+    </div>
+</div>

@@ -5,4 +5,5 @@ export interface MsgModel {
     email: string
     subject: string
     content: string
+    isSeen: boolean
 }

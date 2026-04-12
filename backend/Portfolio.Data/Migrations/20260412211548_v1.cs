@@ -222,35 +222,52 @@ namespace Portfolio.Data.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "C#" },
-                    { 2, "ASP.NET" },
-                    { 3, "Entity Framework" },
-                    { 4, "MySQL" },
-                    { 5, "JavaScript" },
-                    { 6, "TypeScript" },
-                    { 7, "HTML5" },
-                    { 8, "CSS3" },
-                    { 9, "REST APIs" },
-                    { 10, "Firebase" },
-                    { 11, "Mock API" },
-                    { 12, "Git" },
-                    { 13, "VS Code" },
-                    { 14, "Visual Studio" },
-                    { 15, "Neovim" },
-                    { 16, "Team Leadership" },
-                    { 17, "Code Review" },
-                    { 18, "Mentoring" },
-                    { 19, "Figma" },
-                    { 20, "Angular" },
-                    { 21, "Bootstrap" },
-                    { 22, "x64 asm" },
-                    { 23, "Makefile" }
+                    { 1, "JavaScript" },
+                    { 2, "TypeScript" },
+                    { 3, "C#" },
+                    { 4, "SQL" },
+                    { 5, "C" },
+                    { 6, "C++" },
+                    { 7, "x86-64 Assembly" },
+                    { 8, "Angular" },
+                    { 9, "HTML" },
+                    { 10, "CSS / SCSS" },
+                    { 11, "Figma" },
+                    { 12, ".NET" },
+                    { 13, "Entity Framework Core" },
+                    { 14, "REST APIs" },
+                    { 15, "Firebase" },
+                    { 16, "Mock API" },
+                    { 17, "MySQL" },
+                    { 18, "Git" },
+                    { 19, "Linux" },
+                    { 20, "VS Code" },
+                    { 21, "Visual Studio" },
+                    { 22, "Neovim" },
+                    { 23, "Makefile" },
+                    { 24, "Team Leadership" },
+                    { 25, "Code Review" },
+                    { 26, "Mentoring" }
                 });
 
             migrationBuilder.InsertData(
                 table: "ProjectTags",
                 columns: new[] { "Id", "ProjectId", "TagId" },
-                values: new object[] { 1, 1, 20 });
+                values: new object[,]
+                {
+                    { 1, 1, 2 },
+                    { 2, 1, 3 },
+                    { 3, 1, 4 },
+                    { 4, 1, 8 },
+                    { 5, 1, 9 },
+                    { 6, 1, 10 },
+                    { 7, 1, 12 },
+                    { 8, 1, 13 },
+                    { 9, 1, 14 },
+                    { 10, 1, 17 },
+                    { 11, 1, 20 },
+                    { 12, 1, 21 }
+                });
 
             migrationBuilder.InsertData(
                 table: "SkillTags",
@@ -258,34 +275,37 @@ namespace Portfolio.Data.Migrations
                 values: new object[,]
                 {
                     { 1, 1, 1 },
-                    { 2, 1, 5 },
-                    { 3, 1, 6 },
-                    { 4, 1, 7 },
-                    { 5, 1, 8 },
-                    { 6, 1, 22 },
-                    { 7, 2, 20 },
-                    { 8, 2, 19 },
-                    { 9, 2, 21 },
-                    { 10, 3, 2 },
-                    { 11, 3, 3 },
-                    { 12, 3, 9 },
-                    { 13, 4, 4 },
-                    { 14, 4, 10 },
-                    { 15, 4, 11 },
-                    { 16, 5, 12 },
-                    { 17, 5, 13 },
-                    { 18, 5, 14 },
-                    { 19, 5, 15 },
-                    { 20, 5, 13 },
-                    { 21, 6, 16 },
-                    { 22, 6, 17 },
-                    { 23, 6, 18 }
+                    { 2, 1, 2 },
+                    { 3, 1, 3 },
+                    { 4, 1, 4 },
+                    { 5, 1, 5 },
+                    { 6, 1, 6 },
+                    { 7, 1, 7 },
+                    { 8, 2, 8 },
+                    { 9, 2, 9 },
+                    { 10, 2, 10 },
+                    { 11, 2, 11 },
+                    { 12, 3, 12 },
+                    { 13, 3, 13 },
+                    { 14, 3, 14 },
+                    { 15, 4, 15 },
+                    { 16, 4, 16 },
+                    { 17, 4, 17 },
+                    { 18, 5, 18 },
+                    { 19, 5, 19 },
+                    { 20, 5, 20 },
+                    { 21, 5, 21 },
+                    { 22, 5, 22 },
+                    { 23, 5, 23 },
+                    { 24, 6, 24 },
+                    { 25, 6, 25 },
+                    { 26, 6, 26 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AboutId", "ContactId", "PasswordHash" },
-                values: new object[] { 1, 1, 1, "JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk=" });
+                values: new object[] { 1, 1, 1, "hy5OUM6ZkNiwQTMMR8nd0Rvsa1A66ThqmdqFhOm7EsQ=" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_demoLink",

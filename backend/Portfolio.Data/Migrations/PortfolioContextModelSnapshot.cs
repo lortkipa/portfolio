@@ -252,7 +252,73 @@ namespace Portfolio.Data.Migrations
                         {
                             Id = 1,
                             ProjectId = 1,
+                            TagId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ProjectId = 1,
+                            TagId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ProjectId = 1,
+                            TagId = 4
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ProjectId = 1,
+                            TagId = 8
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ProjectId = 1,
+                            TagId = 9
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ProjectId = 1,
+                            TagId = 10
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ProjectId = 1,
+                            TagId = 12
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ProjectId = 1,
+                            TagId = 13
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ProjectId = 1,
+                            TagId = 14
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ProjectId = 1,
+                            TagId = 17
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ProjectId = 1,
                             TagId = 20
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ProjectId = 1,
+                            TagId = 21
                         });
                 });
 
@@ -354,133 +420,151 @@ namespace Portfolio.Data.Migrations
                         {
                             Id = 2,
                             SkillId = 1,
-                            TagId = 5
+                            TagId = 2
                         },
                         new
                         {
                             Id = 3,
                             SkillId = 1,
-                            TagId = 6
+                            TagId = 3
                         },
                         new
                         {
                             Id = 4,
                             SkillId = 1,
-                            TagId = 7
+                            TagId = 4
                         },
                         new
                         {
                             Id = 5,
                             SkillId = 1,
-                            TagId = 8
+                            TagId = 5
                         },
                         new
                         {
                             Id = 6,
                             SkillId = 1,
-                            TagId = 22
+                            TagId = 6
                         },
                         new
                         {
                             Id = 7,
-                            SkillId = 2,
-                            TagId = 20
+                            SkillId = 1,
+                            TagId = 7
                         },
                         new
                         {
                             Id = 8,
                             SkillId = 2,
-                            TagId = 19
+                            TagId = 8
                         },
                         new
                         {
                             Id = 9,
                             SkillId = 2,
-                            TagId = 21
+                            TagId = 9
                         },
                         new
                         {
                             Id = 10,
-                            SkillId = 3,
-                            TagId = 2
+                            SkillId = 2,
+                            TagId = 10
                         },
                         new
                         {
                             Id = 11,
-                            SkillId = 3,
-                            TagId = 3
+                            SkillId = 2,
+                            TagId = 11
                         },
                         new
                         {
                             Id = 12,
                             SkillId = 3,
-                            TagId = 9
+                            TagId = 12
                         },
                         new
                         {
                             Id = 13,
-                            SkillId = 4,
-                            TagId = 4
+                            SkillId = 3,
+                            TagId = 13
                         },
                         new
                         {
                             Id = 14,
-                            SkillId = 4,
-                            TagId = 10
+                            SkillId = 3,
+                            TagId = 14
                         },
                         new
                         {
                             Id = 15,
                             SkillId = 4,
-                            TagId = 11
+                            TagId = 15
                         },
                         new
                         {
                             Id = 16,
-                            SkillId = 5,
-                            TagId = 12
+                            SkillId = 4,
+                            TagId = 16
                         },
                         new
                         {
                             Id = 17,
-                            SkillId = 5,
-                            TagId = 13
+                            SkillId = 4,
+                            TagId = 17
                         },
                         new
                         {
                             Id = 18,
                             SkillId = 5,
-                            TagId = 14
+                            TagId = 18
                         },
                         new
                         {
                             Id = 19,
                             SkillId = 5,
-                            TagId = 15
+                            TagId = 19
                         },
                         new
                         {
                             Id = 20,
                             SkillId = 5,
-                            TagId = 13
+                            TagId = 20
                         },
                         new
                         {
                             Id = 21,
-                            SkillId = 6,
-                            TagId = 16
+                            SkillId = 5,
+                            TagId = 21
                         },
                         new
                         {
                             Id = 22,
-                            SkillId = 6,
-                            TagId = 17
+                            SkillId = 5,
+                            TagId = 22
                         },
                         new
                         {
                             Id = 23,
+                            SkillId = 5,
+                            TagId = 23
+                        },
+                        new
+                        {
+                            Id = 24,
                             SkillId = 6,
-                            TagId = 18
+                            TagId = 24
+                        },
+                        new
+                        {
+                            Id = 25,
+                            SkillId = 6,
+                            TagId = 25
+                        },
+                        new
+                        {
+                            Id = 26,
+                            SkillId = 6,
+                            TagId = 26
                         });
                 });
 
@@ -508,117 +592,132 @@ namespace Portfolio.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "C#"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "ASP.NET"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Entity Framework"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "MySQL"
-                        },
-                        new
-                        {
-                            Id = 5,
                             Name = "JavaScript"
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 2,
                             Name = "TypeScript"
                         },
                         new
                         {
+                            Id = 3,
+                            Name = "C#"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "SQL"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "C"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "C++"
+                        },
+                        new
+                        {
                             Id = 7,
-                            Name = "HTML5"
+                            Name = "x86-64 Assembly"
                         },
                         new
                         {
                             Id = 8,
-                            Name = "CSS3"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "REST APIs"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Firebase"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Mock API"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "Git"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Name = "VS Code"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "Visual Studio"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Name = "Neovim"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Name = "Team Leadership"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Name = "Code Review"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Name = "Mentoring"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Name = "Figma"
-                        },
-                        new
-                        {
-                            Id = 20,
                             Name = "Angular"
                         },
                         new
                         {
+                            Id = 9,
+                            Name = "HTML"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "CSS / SCSS"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Figma"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = ".NET"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Entity Framework Core"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "REST APIs"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Firebase"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Mock API"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "MySQL"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Git"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "Linux"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "VS Code"
+                        },
+                        new
+                        {
                             Id = 21,
-                            Name = "Bootstrap"
+                            Name = "Visual Studio"
                         },
                         new
                         {
                             Id = 22,
-                            Name = "x64 asm"
+                            Name = "Neovim"
                         },
                         new
                         {
                             Id = 23,
                             Name = "Makefile"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "Team Leadership"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "Code Review"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "Mentoring"
                         });
                 });
 
@@ -657,7 +756,7 @@ namespace Portfolio.Data.Migrations
                             Id = 1,
                             AboutId = 1,
                             ContactId = 1,
-                            PasswordHash = "JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk="
+                            PasswordHash = "hy5OUM6ZkNiwQTMMR8nd0Rvsa1A66ThqmdqFhOm7EsQ="
                         });
                 });
 

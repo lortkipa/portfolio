@@ -13,6 +13,7 @@ namespace Portfolio.Data.Entities
         public int Id { get; set; }
         [Required]
         public int ContactId { get; set; }
+        [Required]
         public int AboutId { get; set; }
         [Required]
         [MaxLength(200)]

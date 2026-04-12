@@ -1,5 +1,51 @@
 [
   {
+    "ContainingType": "Portfolio.API.Controllers.MessageController",
+    "Method": "GetAll",
+    "RelativePath": "api/Message/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Portfolio.Service.DTO.Message.MessageDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Portfolio.API.Controllers.MessageController",
+    "Method": "Send",
+    "RelativePath": "api/Message/Send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Portfolio.Service.DTO.Message.CreateMessageDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Portfolio.Service.DTO.Message.MessageDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Portfolio.API.Controllers.ProjectController",
     "Method": "Add",
     "RelativePath": "api/Project/Add",

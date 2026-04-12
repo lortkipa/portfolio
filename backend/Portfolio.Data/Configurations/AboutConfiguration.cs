@@ -15,13 +15,13 @@ namespace Portfolio.Data.Configurations
                 .HasKey(u => u.Id);
             builder.Property(u => u.FullName)
                 .IsRequired()
-                .HasMaxLength(25);
+                .HasMaxLength(50);
             builder.Property(u => u.JobTitle)
                 .IsRequired()
-                .HasMaxLength(250);
+                .HasMaxLength(50);
             builder.Property(u => u.Bio)
                 .IsRequired()
-                .HasMaxLength(25);
+                .HasMaxLength(500);
             builder.Property(u => u.StatusBadge)
                 .IsRequired()
                 .HasMaxLength(25);

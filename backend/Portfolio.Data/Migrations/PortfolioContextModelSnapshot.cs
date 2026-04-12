@@ -31,13 +31,13 @@ namespace Portfolio.Data.Migrations
 
                     b.Property<string>("Bio")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("FunBadge")
                         .IsRequired()
@@ -46,8 +46,8 @@ namespace Portfolio.Data.Migrations
 
                     b.Property<string>("JobTitle")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("StatusBadge")
                         .IsRequired()
@@ -56,7 +56,7 @@ namespace Portfolio.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Abouts");
+                    b.ToTable("Abouts", (string)null);
 
                     b.HasData(
                         new
@@ -103,7 +103,7 @@ namespace Portfolio.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contacts");
+                    b.ToTable("Contacts", (string)null);
 
                     b.HasData(
                         new
@@ -115,6 +115,42 @@ namespace Portfolio.Data.Migrations
                             Location = "Tbilisi, Georgia",
                             PhoneNumber = "+995 575 78 03 23"
                         });
+                });
+
+            modelBuilder.Entity("Portfolio.Data.Entities.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Messages", (string)null);
                 });
 
             modelBuilder.Entity("Portfolio.Data.Entities.Project", b =>
@@ -132,8 +168,9 @@ namespace Portfolio.Data.Migrations
 
                     b.Property<string>("Icon")
                         .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasMaxLength(10)
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("Theme")
                         .HasColumnType("int");
@@ -153,7 +190,21 @@ namespace Portfolio.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Projects");
+                    b.HasIndex("Desc")
+                        .IsUnique();
+
+                    b.HasIndex("Title")
+                        .IsUnique();
+
+                    b.HasIndex("demoLink")
+                        .IsUnique()
+                        .HasFilter("[demoLink] IS NOT NULL");
+
+                    b.HasIndex("githubLink")
+                        .IsUnique()
+                        .HasFilter("[githubLink] IS NOT NULL");
+
+                    b.ToTable("Projects", (string)null);
 
                     b.HasData(
                         new
@@ -187,7 +238,7 @@ namespace Portfolio.Data.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("ProjectTags");
+                    b.ToTable("ProjectTags", (string)null);
 
                     b.HasData(
                         new
@@ -283,7 +334,7 @@ namespace Portfolio.Data.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("SkillTags");
+                    b.ToTable("SkillTags", (string)null);
 
                     b.HasData(
                         new
@@ -591,7 +642,7 @@ namespace Portfolio.Data.Migrations
                     b.HasIndex("ContactId")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasData(
                         new

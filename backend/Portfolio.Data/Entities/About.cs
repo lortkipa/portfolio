@@ -12,13 +12,13 @@ namespace Portfolio.Data.Entities
         [Key]
         public int Id { get; set; }
         [Required]
-        [MaxLength(25)]
+        [MaxLength(50)]
         public string FullName { get; set; } = null!;
         [Required]
-        [MaxLength(25)]
+        [MaxLength(50)]
         public string JobTitle { get; set; } = null!;
         [Required]
-        [MaxLength(250)]
+        [MaxLength(500)]
         public string Bio { get; set; } = null!;
         [Required]
         [MaxLength(25)]

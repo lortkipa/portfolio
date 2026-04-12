@@ -2,6 +2,7 @@
 using Portfolio.Data.Entities;
 using Portfolio.Service.DTO.About;
 using Portfolio.Service.DTO.Contact;
+using Portfolio.Service.DTO.Message;
 using Portfolio.Service.DTO.Project;
 using Portfolio.Service.DTO.ProjectTag;
 using Portfolio.Service.DTO.Skill;
@@ -55,6 +56,11 @@ namespace Portfolio.Service.Mapping
             CreateMap<About, AboutDTO>().ReverseMap();
             CreateMap<CreateAboutDTO, About>();
             CreateMap<UpdateAboutDTO, About>();
+
+            // Message
+            CreateMap<Message, MessageDTO>().ReverseMap();
+            CreateMap<CreateMessageDTO, Message>();
+            CreateMap<UpdateMessageDTO, Message>();
         }
     }
 }

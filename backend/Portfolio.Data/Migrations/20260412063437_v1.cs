@@ -18,9 +18,9 @@ namespace Portfolio.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FullName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    JobTitle = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    Bio = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    JobTitle = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Bio = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     StatusBadge = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     FunBadge = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false)
                 },
@@ -47,12 +47,28 @@ namespace Portfolio.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Messages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(254)", maxLength: 254, nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", maxLength: 5000, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Icon = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Desc = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Theme = table.Column<int>(type: "int", nullable: false),
@@ -269,6 +285,32 @@ namespace Portfolio.Data.Migrations
                 values: new object[] { 1, 1, 1, "JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk=" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Projects_demoLink",
+                table: "Projects",
+                column: "demoLink",
+                unique: true,
+                filter: "[demoLink] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_Desc",
+                table: "Projects",
+                column: "Desc",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_githubLink",
+                table: "Projects",
+                column: "githubLink",
+                unique: true,
+                filter: "[githubLink] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_Title",
+                table: "Projects",
+                column: "Title",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProjectTags_ProjectId",
                 table: "ProjectTags",
                 column: "ProjectId");
@@ -316,6 +358,9 @@ namespace Portfolio.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Messages");
+
             migrationBuilder.DropTable(
                 name: "ProjectTags");
 

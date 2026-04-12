@@ -19,6 +19,8 @@ namespace Portfolio.Data
         public DbSet<ProjectTag> ProjectTags { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<About> Abouts { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         public PortfolioContext()
         {
@@ -37,6 +39,13 @@ namespace Portfolio.Data
             // add configurations
             modelBuilder.ApplyConfiguration(new TagConfiguration());
             modelBuilder.ApplyConfiguration(new SkillConfiguration());
+            modelBuilder.ApplyConfiguration(new SkillTagConfiguration());
+            modelBuilder.ApplyConfiguration(new ProjectConfiguration());
+            modelBuilder.ApplyConfiguration(new ProjectTagConfiguration());
+            modelBuilder.ApplyConfiguration(new ContactConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new AboutConfiguration());
+            modelBuilder.ApplyConfiguration(new MessageConfiguration());
 
             // hash password
             string passwordHash;

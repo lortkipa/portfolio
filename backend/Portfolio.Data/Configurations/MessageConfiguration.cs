@@ -13,6 +13,9 @@ namespace Portfolio.Data.Configurations
         {
             builder.ToTable("Messages")
                 .HasKey(m => m.Id);
+            builder.Property(c => c.Date)
+                .IsRequired()
+                .HasColumnType("datetime");
             builder.Property(m => m.FullName)
                 .IsRequired()
                 .HasMaxLength(100)

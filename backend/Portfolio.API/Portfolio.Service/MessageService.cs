@@ -38,6 +38,7 @@ namespace Portfolio.Service
             if (model == null) return null;
 
             var entity = _mapper.Map<Message>(model);
+            entity.Date = DateTime.Now;
             await _repo.AddAsync(entity);
             return _mapper.Map<MessageDTO>(entity);
         }

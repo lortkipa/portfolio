@@ -31,6 +31,7 @@ export class Contact {
 
   msg = signal<MsgModel>({
     id: 0,
+    date: '',
     fullName: '',
     email: '',
     subject: '',
@@ -80,6 +81,7 @@ export class Contact {
         this.showSuccess.set(true)
         this.msg.set({
           id: 0,
+          date: '',
           fullName: '',
           email: '',
           subject: '',
@@ -94,6 +96,7 @@ export class Contact {
         this.showError.set(true)
          this.msg.set({
           id: 0,
+          date: '',
           fullName: '',
           email: '',
           subject: '',

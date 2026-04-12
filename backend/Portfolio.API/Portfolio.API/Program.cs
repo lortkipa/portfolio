@@ -22,7 +22,7 @@ namespace Portfolio.API
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAngular", policy =>
-                policy.WithOrigins("http://localhost:4200")
+                policy.AllowAnyOrigin()
                       .AllowAnyHeader()
                       .AllowAnyMethod());
             });
@@ -111,6 +111,8 @@ namespace Portfolio.API
             var app = builder.Build();
 
             app.UseCors("AllowAngular");
+            //app.UseCors("AllowAll");
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

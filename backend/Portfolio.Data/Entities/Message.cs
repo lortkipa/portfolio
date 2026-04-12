@@ -13,6 +13,8 @@ namespace Portfolio.Data.Entities
         [Key]
         public int Id { get; set; }
         [Required]
+        public DateTime Date { get; set; }
+        [Required]
         [MaxLength(100)]
         public string FullName { get; set; } = null!;
         [Required]

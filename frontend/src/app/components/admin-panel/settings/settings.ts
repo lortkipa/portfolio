@@ -16,6 +16,12 @@ import { FormsModule } from '@angular/forms';
 export class Settings {
   contact = signal<ContactModel>({
     id: 0,
+    emailJS: {
+      id: 0,
+      serviceId: '',
+      templateId: '',
+      publicKey: ''
+    },
     email: '',
     location: '',
     phoneNumber: '',

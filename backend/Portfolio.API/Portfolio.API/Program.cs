@@ -93,6 +93,7 @@ namespace Portfolio.API
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IAboutRepository, AboutRepository>();
             builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+            builder.Services.AddScoped<IEmailJSRepository, EmailJSRepository>();
 
             // Add services to the container
             builder.Services.AddScoped<ITagService, TagService>();
@@ -104,6 +105,7 @@ namespace Portfolio.API
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IAboutService, AboutService>();
             builder.Services.AddScoped<IMessageService, MessageService>();
+            builder.Services.AddScoped<IEmailJSService, EmailJSService>();
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

@@ -1,5 +1,13 @@
+export interface EmailJSModel {
+    id: number
+    serviceId: string
+    templateId: string
+    publicKey: string
+}
+
 export interface ContactModel {
     id: number
+    emailJS: EmailJSModel
     email: string
     location: string
     phoneNumber: string

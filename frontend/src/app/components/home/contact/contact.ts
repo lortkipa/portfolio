@@ -13,6 +13,7 @@ import { UserService } from '../../../services/user-service';
 import { MsgModel } from '../../../models/message';
 import { single } from 'rxjs';
 import { MsgService } from '../../../services/msg-service';
+import { EmailjsService } from '../../../services/emailjs-service';
 
 @Component({
   selector: 'app-contact',
@@ -37,12 +38,12 @@ export class Contact {
     email: '',
     subject: '',
     content: '',
-          isSeen: false
+    isSeen: false
   })
 
   profile = signal<UserProfileModel | null>(null);
 
-  constructor(private userServ: UserService, private msgServ: MsgService) {
+  constructor(private userServ: UserService, private msgServ: MsgService, private emailServ: EmailjsService) {
 
     this.userServ.getProfile().subscribe(data => {
       this.profile.set(data);
@@ -90,20 +91,41 @@ export class Contact {
 
     this.msgServ.send(this.msg()).subscribe({
       next: () => {
-        this.showSuccess.set(true)
-        this.msg.set({
-          id: 0,
-          date: '',
-          fullName: '',
-          email: '',
-          subject: '',
-          content: '',
-          isSeen: false
-        })
-        setTimeout(() => {
-          this.isSubmitting.set(false)
-          this.showSuccess.set(false);
-        }, 5000);
+        const emailJS = this.profile()?.contact.emailJS
+        if (!emailJS) return;
+        let res = this.emailServ.sendEmail(this.msg().fullName, this.msg().email, this.msg().subject, this.msg().content, emailJS)
+
+        if (res) {
+          this.showSuccess.set(true)
+          this.msg.set({
+            id: 0,
+            date: '',
+            fullName: '',
+            email: '',
+            subject: '',
+            content: '',
+            isSeen: false
+          })
+          setTimeout(() => {
+            this.isSubmitting.set(false)
+            this.showSuccess.set(false);
+          }, 5000)
+        } else {
+          this.showError.set(true)
+          this.msg.set({
+            id: 0,
+            date: '',
+            fullName: '',
+            email: '',
+            subject: '',
+            content: '',
+            isSeen: false
+          })
+          setTimeout(() => {
+            this.isSubmitting.set(false)
+            this.showError.set(false);
+          }, 5000);
+        }
       },
       error: () => {
         this.showError.set(true)

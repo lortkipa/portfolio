@@ -628,7 +628,7 @@
       },
       {
         "Name": "model",
-        "Type": "Portfolio.Service.DTO.Contact.UpdateContactDTO",
+        "Type": "Portfolio.Service.DTO.Contact.UpdateContactWithEmailJSDTO",
         "IsRequired": true
       }
     ],

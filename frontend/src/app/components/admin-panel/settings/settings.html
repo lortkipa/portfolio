@@ -21,6 +21,22 @@
             <input type="url" id="set-linkedin" [(ngModel)]="contact().location" />
         </div>
     </div>
+
+    <div class="form-section">
+        <div class="form-section-title">📧 EmailJS</div>
+        <div class="field-row">
+            <div class="field"><label>Service Id</label>
+                <input type="text" id="set-email" [(ngModel)]="contact().emailJS.serviceId" />
+            </div>
+            <div class="field"><label>Template Id</label>
+                <input type="text" id="set-email" [(ngModel)]="contact().emailJS.templateId" />
+            </div>
+        </div>
+        <div class="field"><label>Public Key</label>
+            <input type="text" id="set-email" [(ngModel)]="contact().emailJS.publicKey" />
+        </div>
+    </div>
+
     <div style="display:flex;justify-content:flex-end">
         <button class="btn btn-primary" (click)="saveSettings()">💾 Save Settings</button>
     </div>

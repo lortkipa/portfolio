@@ -2,6 +2,7 @@
 using Portfolio.Data.Entities;
 using Portfolio.Service.DTO.About;
 using Portfolio.Service.DTO.Contact;
+using Portfolio.Service.DTO.EmailJS;
 using Portfolio.Service.DTO.Message;
 using Portfolio.Service.DTO.Project;
 using Portfolio.Service.DTO.ProjectTag;
@@ -61,6 +62,11 @@ namespace Portfolio.Service.Mapping
             CreateMap<Message, MessageDTO>().ReverseMap();
             CreateMap<CreateMessageDTO, Message>();
             CreateMap<UpdateMessageDTO, Message>();
+
+            // EmailJS
+            CreateMap<EmailJS, EmailJSDTO>().ReverseMap();
+            CreateMap<CreateEmailJSDTO, EmailJS>();
+            CreateMap<UpdateEmailJSDTO, EmailJS>();
         }
     }
 }

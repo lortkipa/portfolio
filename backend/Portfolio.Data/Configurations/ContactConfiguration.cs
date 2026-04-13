@@ -13,6 +13,8 @@ namespace Portfolio.Data.Configurations
         {
             builder.ToTable("Contacts")
                 .HasKey(c => c.Id);
+            builder.Property(c => c.EmailJSId)
+                .IsRequired();
             builder.Property(c => c.Email)
                 .IsRequired()
                 .HasMaxLength(254);
@@ -31,6 +33,11 @@ namespace Portfolio.Data.Configurations
             builder.HasOne(c => c.User)
                 .WithOne(u => u.Contact)
                 .HasForeignKey<User>(u => u.ContactId)
+                .OnDelete(DeleteBehavior.Cascade);
+            // Contact => EmailJS
+            builder.HasOne(c => c.EmailJS)
+                .WithOne(e => e.Contact)
+                .HasForeignKey<Contact>(c => c.EmailJSId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

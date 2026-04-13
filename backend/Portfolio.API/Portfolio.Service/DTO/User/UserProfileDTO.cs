@@ -10,7 +10,7 @@ namespace Portfolio.Service.DTO.User
     {
         public int Id { get; set; }
         public string FullName { get; set; } = null!;
-        public ContactDTO? Contact { get; set; }
+        public ContactWithEmailJSDTO? Contact { get; set; }
         public AboutDTO? About { get; set; }
     }
 }

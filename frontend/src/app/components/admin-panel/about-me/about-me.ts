@@ -18,11 +18,17 @@ export class AboutMe {
     id: 0,
     contact: {
       id: 0,
+      emailJS: {
+        id: 0,
+        serviceId: '',
+        templateId: '',
+        publicKey: ''
+      },
       email: '',
       location: '',
       phoneNumber: '',
       githubLink: '',
-      linkedinLink: ''
+      linkedinLink: '',
     },
     about: {
       id: 0,

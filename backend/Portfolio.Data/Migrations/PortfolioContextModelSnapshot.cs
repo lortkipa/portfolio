@@ -84,6 +84,9 @@ namespace Portfolio.Data.Migrations
                         .HasMaxLength(254)
                         .HasColumnType("nvarchar(254)");
 
+                    b.Property<int>("EmailJSId")
+                        .HasColumnType("int");
+
                     b.Property<string>("GithubLink")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -104,6 +107,9 @@ namespace Portfolio.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmailJSId")
+                        .IsUnique();
+
                     b.ToTable("Contacts", (string)null);
 
                     b.HasData(
@@ -111,10 +117,39 @@ namespace Portfolio.Data.Migrations
                         {
                             Id = 1,
                             Email = "nikusha191208@gmail.com",
+                            EmailJSId = 1,
                             GithubLink = "https://github.com/lortkipa",
                             LinkedinLink = "https://www.linkedin.com/in/nikoloz-lortkipanidze-2b4263329/",
                             Location = "Tbilisi, Georgia",
                             PhoneNumber = "+995 575 78 03 23"
+                        });
+                });
+
+            modelBuilder.Entity("Portfolio.Data.Entities.EmailJS", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PublicKey")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ServiceId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TemplateId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmailJS", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1
                         });
                 });
 
@@ -760,6 +795,17 @@ namespace Portfolio.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Portfolio.Data.Entities.Contact", b =>
+                {
+                    b.HasOne("Portfolio.Data.Entities.EmailJS", "EmailJS")
+                        .WithOne("Contact")
+                        .HasForeignKey("Portfolio.Data.Entities.Contact", "EmailJSId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EmailJS");
+                });
+
             modelBuilder.Entity("Portfolio.Data.Entities.ProjectTag", b =>
                 {
                     b.HasOne("Portfolio.Data.Entities.Project", "Project")
@@ -825,6 +871,11 @@ namespace Portfolio.Data.Migrations
             modelBuilder.Entity("Portfolio.Data.Entities.Contact", b =>
                 {
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Portfolio.Data.Entities.EmailJS", b =>
+                {
+                    b.Navigation("Contact");
                 });
 
             modelBuilder.Entity("Portfolio.Data.Entities.Project", b =>

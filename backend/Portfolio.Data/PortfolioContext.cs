@@ -21,6 +21,7 @@ namespace Portfolio.Data
         public DbSet<User> Users { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<EmailJS> EmailJSs { get; set; }
 
         public PortfolioContext()
         {
@@ -46,6 +47,7 @@ namespace Portfolio.Data
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new AboutConfiguration());
             modelBuilder.ApplyConfiguration(new MessageConfiguration());
+            modelBuilder.ApplyConfiguration(new EmailJSConfiguration());
 
             // hash password
             var path = Path.Combine(Directory.GetCurrentDirectory(), "", "password.txt");
@@ -150,10 +152,20 @@ namespace Portfolio.Data
                 new ProjectTag { Id = 11, ProjectId = 1, TagId = 20 },
                 new ProjectTag { Id = 12, ProjectId = 1, TagId = 21 }
             );
+            modelBuilder.Entity<EmailJS>().HasData(
+                new EmailJS 
+                {
+                    Id = 1,
+                    ServiceId = null,
+                    TemplateId = null,
+                    PublicKey = null
+                }
+            );
             modelBuilder.Entity<Contact>().HasData(
                 new Contact 
                 {
                     Id = 1,
+                    EmailJSId = 1,
                     Email = "nikusha191208@gmail.com",
                     Location = "Tbilisi, Georgia",
                     PhoneNumber = "+995 575 78 03 23",

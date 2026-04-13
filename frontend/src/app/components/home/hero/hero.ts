@@ -15,6 +15,12 @@ export class Hero implements AfterViewInit {
     id: 0,
     contact: {
       id: 0,
+      emailJS: {
+        id: 0,
+        serviceId: '',
+        templateId: '',
+        publicKey: ''
+      },
       email: '',
       location: '',
       phoneNumber: '',

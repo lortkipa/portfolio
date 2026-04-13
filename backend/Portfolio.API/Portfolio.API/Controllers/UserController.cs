@@ -18,12 +18,14 @@ namespace Portfolio.API.Controllers
         private readonly IUserService _userServ;
         private readonly IContactService _contactServ;
         private readonly IAboutService _aboutServ;
+        private readonly IEmailJSService _emailServ;
         private readonly IConfiguration _config;
-        public UserController(IAboutService aboutServ, IUserService userServ, IContactService contactServ, IConfiguration config)
+        public UserController(IAboutService aboutServ, IUserService userServ, IContactService contactServ, IEmailJSService emailServ, IConfiguration config)
         {
             _aboutServ = aboutServ;
             _userServ = userServ;
             _contactServ = contactServ;
+            _emailServ = emailServ;
             _config = config;
         }
 
@@ -32,14 +34,16 @@ namespace Portfolio.API.Controllers
         {
             var user = await _userServ.GetByIdAsync(1);
             var contact = await _contactServ.GetByIdAsync(user.ContactId);
+            var email = await _emailServ.GetByIdAsync(contact.EmailJSId);
             var about = await _aboutServ.GetByIdAsync(user.AboutId);
 
             var result = new UserProfileDTO
             {
                 Id = user.Id,
-                Contact = new ContactDTO
+                Contact = new ContactWithEmailJSDTO
                 {
                     Id = contact.Id,
+                    EmailJS = email,
                     Email = contact.Email,
                     PhoneNumber = contact.PhoneNumber,
                     Location = contact.Location,
@@ -95,7 +99,7 @@ namespace Portfolio.API.Controllers
         }
         [Authorize]
         [HttpPut("UpdateProfileContact/{contactId:int}")]
-        public async Task<ActionResult<AuthResponseDTO>> UpdateProfileContact(int contactId, UpdateContactDTO model)
+        public async Task<ActionResult<AuthResponseDTO>> UpdateProfileContact(int contactId, UpdateContactWithEmailJSDTO model)
         {
             if (!ModelState.IsValid) return BadRequest(new AuthResponseDTO
                                             {
@@ -110,7 +114,18 @@ namespace Portfolio.API.Controllers
                                             Message = "Contact not found."
                                         });
 
-            var result = await _contactServ.UpdateAsync(contactId, model);
+            var result = await _emailServ.UpdateAsync(contact.EmailJSId, model.EmailJS);
+
+            var contactModel = new UpdateContactDTO
+            {
+                EmailJSId = contact.EmailJSId,
+                Email = model.Email,
+                Location = model.Location,
+                PhoneNumber = model.PhoneNumber,
+                GithubLink = model.GithubLink,
+                LinkedinLink = model.LinkedinLink
+            };
+            result = await _contactServ.UpdateAsync(contactId, contactModel);
             if (result)
             {
                 return Ok(new AuthResponseDTO

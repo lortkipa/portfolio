@@ -1039,17 +1039,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateContactDTO"
+                "$ref": "#/components/schemas/UpdateContactWithEmailJSDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateContactDTO"
+                "$ref": "#/components/schemas/UpdateContactWithEmailJSDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateContactDTO"
+                "$ref": "#/components/schemas/UpdateContactWithEmailJSDTO"
               }
             }
           }
@@ -1183,12 +1183,15 @@
         },
         "additionalProperties": false
       },
-      "ContactDTO": {
+      "ContactWithEmailJSDTO": {
         "type": "object",
         "properties": {
           "id": {
             "type": "integer",
             "format": "int32"
+          },
+          "emailJS": {
+            "$ref": "#/components/schemas/EmailJSDTO"
           },
           "email": {
             "type": "string",
@@ -1285,6 +1288,28 @@
         "type": "object",
         "properties": {
           "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmailJSDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "serviceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "templateId": {
+            "type": "string",
+            "nullable": true
+          },
+          "publicKey": {
             "type": "string",
             "nullable": true
           }
@@ -1438,9 +1463,12 @@
         },
         "additionalProperties": false
       },
-      "UpdateContactDTO": {
+      "UpdateContactWithEmailJSDTO": {
         "type": "object",
         "properties": {
+          "emailJS": {
+            "$ref": "#/components/schemas/UpdateEmailJSDTO"
+          },
           "email": {
             "type": "string",
             "nullable": true
@@ -1458,6 +1486,24 @@
             "nullable": true
           },
           "linkedinLink": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateEmailJSDTO": {
+        "type": "object",
+        "properties": {
+          "serviceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "templateId": {
+            "type": "string",
+            "nullable": true
+          },
+          "publicKey": {
             "type": "string",
             "nullable": true
           }
@@ -1529,7 +1575,7 @@
             "nullable": true
           },
           "contact": {
-            "$ref": "#/components/schemas/ContactDTO"
+            "$ref": "#/components/schemas/ContactWithEmailJSDTO"
           },
           "about": {
             "$ref": "#/components/schemas/AboutDTO"

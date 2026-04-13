@@ -8,6 +8,7 @@ namespace Portfolio.Service.DTO.Contact
     public class ContactDTO
     {
         public int Id { get; set; }
+        public int EmailJSId { get; set; }
         public string Email { get; set; } = null!;
         public string Location { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;

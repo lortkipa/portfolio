@@ -12,6 +12,8 @@ namespace Portfolio.Data.Entities
         [Key]
         public int Id { get; set; }
         [Required]
+        public int EmailJSId { get; set; }
+        [Required]
         [MaxLength(254)]
         [EmailAddress(ErrorMessage = "Invalid email address format.")]
         public string Email { get; set; } = null!;
@@ -28,5 +30,7 @@ namespace Portfolio.Data.Entities
 
         // Contact => User
         public User? User { get; set; }
+        // Contact => EmailJS
+        public EmailJS? EmailJS { get; set; }
     }
 }

@@ -31,20 +31,18 @@ namespace Portfolio.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Contacts",
+                name: "EmailJS",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(254)", maxLength: 254, nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    GithubLink = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    LinkedinLink = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                    ServiceId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TemplateId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PublicKey = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contacts", x => x.Id);
+                    table.PrimaryKey("PK_EmailJS", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -111,28 +109,25 @@ namespace Portfolio.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "Contacts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ContactId = table.Column<int>(type: "int", nullable: false),
-                    AboutId = table.Column<int>(type: "int", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    EmailJSId = table.Column<int>(type: "int", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(254)", maxLength: 254, nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    GithubLink = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    LinkedinLink = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Contacts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Abouts_AboutId",
-                        column: x => x.AboutId,
-                        principalTable: "Abouts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Users_Contacts_ContactId",
-                        column: x => x.ContactId,
-                        principalTable: "Contacts",
+                        name: "FK_Contacts_EmailJS_EmailJSId",
+                        column: x => x.EmailJSId,
+                        principalTable: "EmailJS",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -189,15 +184,42 @@ namespace Portfolio.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ContactId = table.Column<int>(type: "int", nullable: false),
+                    AboutId = table.Column<int>(type: "int", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Abouts_AboutId",
+                        column: x => x.AboutId,
+                        principalTable: "Abouts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Users_Contacts_ContactId",
+                        column: x => x.ContactId,
+                        principalTable: "Contacts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Abouts",
                 columns: new[] { "Id", "Bio", "FullName", "FunBadge", "JobTitle", "StatusBadge" },
                 values: new object[] { 1, "I design and build thoughtful digital products — from responsive interfaces to robust backend systems. Passionate about clean code, great UX, and technology that actually matters.", "Nikoloz Lortkipanidze", "Building cool things", "Full-Stack Developer", "Open to work" });
 
             migrationBuilder.InsertData(
-                table: "Contacts",
-                columns: new[] { "Id", "Email", "GithubLink", "LinkedinLink", "Location", "PhoneNumber" },
-                values: new object[] { 1, "nikusha191208@gmail.com", "https://github.com/lortkipa", "https://www.linkedin.com/in/nikoloz-lortkipanidze-2b4263329/", "Tbilisi, Georgia", "+995 575 78 03 23" });
+                table: "EmailJS",
+                columns: new[] { "Id", "PublicKey", "ServiceId", "TemplateId" },
+                values: new object[] { 1, null, null, null });
 
             migrationBuilder.InsertData(
                 table: "Projects",
@@ -249,6 +271,11 @@ namespace Portfolio.Data.Migrations
                     { 25, "Code Review" },
                     { 26, "Mentoring" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Contacts",
+                columns: new[] { "Id", "Email", "EmailJSId", "GithubLink", "LinkedinLink", "Location", "PhoneNumber" },
+                values: new object[] { 1, "nikusha191208@gmail.com", 1, "https://github.com/lortkipa", "https://www.linkedin.com/in/nikoloz-lortkipanidze-2b4263329/", "Tbilisi, Georgia", "+995 575 78 03 23" });
 
             migrationBuilder.InsertData(
                 table: "ProjectTags",
@@ -306,6 +333,12 @@ namespace Portfolio.Data.Migrations
                 table: "Users",
                 columns: new[] { "Id", "AboutId", "ContactId", "PasswordHash" },
                 values: new object[] { 1, 1, 1, "hy5OUM6ZkNiwQTMMR8nd0Rvsa1A66ThqmdqFhOm7EsQ=" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Contacts_EmailJSId",
+                table: "Contacts",
+                column: "EmailJSId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_demoLink",
@@ -407,6 +440,9 @@ namespace Portfolio.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Contacts");
+
+            migrationBuilder.DropTable(
+                name: "EmailJS");
         }
     }
 }

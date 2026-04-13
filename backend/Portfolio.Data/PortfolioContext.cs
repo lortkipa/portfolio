@@ -50,9 +50,10 @@ namespace Portfolio.Data
             modelBuilder.ApplyConfiguration(new EmailJSConfiguration());
 
             // hash password
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "", "password.txt");
+            //var path = Path.Combine(Directory.GetCurrentDirectory(), "", "password.txt");
 
-            var password = File.ReadAllText(path).Trim();
+            //var password = File.ReadAllText(path).Trim();
+            var password = "temp";
 
             string passwordHash;
             using (var sha256 = SHA256.Create())

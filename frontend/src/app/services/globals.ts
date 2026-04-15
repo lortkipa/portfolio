@@ -6,4 +6,5 @@ import { Injectable, signal } from '@angular/core';
 export class Globals {
   public fullName = signal<string>('Nikoloz Lortkipanidze')
   public apiUrl = signal<string>('https://localhost:7067/api')
+  
 }

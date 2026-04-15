@@ -791,7 +791,7 @@ namespace Portfolio.Data.Migrations
                             Id = 1,
                             AboutId = 1,
                             ContactId = 1,
-                            PasswordHash = "hy5OUM6ZkNiwQTMMR8nd0Rvsa1A66ThqmdqFhOm7EsQ="
+                            PasswordHash = "poZOszmw4fbgDXUpOohAq/BposD+gublOvasCZeTwdU="
                         });
                 });
 

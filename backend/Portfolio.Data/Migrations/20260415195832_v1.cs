@@ -332,7 +332,7 @@ namespace Portfolio.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AboutId", "ContactId", "PasswordHash" },
-                values: new object[] { 1, 1, 1, "hy5OUM6ZkNiwQTMMR8nd0Rvsa1A66ThqmdqFhOm7EsQ=" });
+                values: new object[] { 1, 1, 1, "poZOszmw4fbgDXUpOohAq/BposD+gublOvasCZeTwdU=" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contacts_EmailJSId",

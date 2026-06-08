@@ -19,14 +19,13 @@
 
         .glitch {
             font-size: 4rem;
+            font-weight: 700;
             line-height: 1.1;
+            position: relative;
+            color: var(--text-color);
 
             @media (max-width: 968px) {
-                font-size: 2.2rem;
-            }
-
-            @media (max-width: 480px) {
-                font-size: 1.8rem;
+                font-size: 2.25rem;
             }
         }
 
@@ -35,10 +34,6 @@
             margin: 2rem 0;
             max-width: 500px;
             opacity: 0.8;
-
-            @media (max-width: 968px) {
-                margin: 2rem auto;
-            }
         }
 
         .hero-btns {
@@ -48,6 +43,7 @@
             @media (max-width: 968px) {
                 justify-content: center;
                 flex-wrap: wrap;
+                margin-bottom: 12px;
             }
 
             @media (max-width: 480px) {
@@ -60,35 +56,6 @@
                     text-align: center;
                 }
             }
-
-            .btn {
-                padding: 1rem 2rem;
-                font-weight: 700;
-                border: 1px solid var(--primary-color);
-                position: relative;
-                overflow: hidden;
-            }
-
-            .btn-primary {
-                background: var(--primary-color);
-                color: #000;
-
-                &:hover {
-                    background: transparent;
-                    color: var(--primary-color);
-                    box-shadow: var(--neon-shadow);
-                }
-            }
-
-            .btn-secondary {
-                color: var(--primary-color);
-
-                &:hover {
-                    background: var(--primary-color);
-                    color: #000;
-                    box-shadow: var(--neon-shadow);
-                }
-            }
         }
     }
 
@@ -99,15 +66,26 @@
         margin: 0 auto;
         box-sizing: border-box;
 
+        @media (max-width: 480px) {
+            margin-left: 4px;
+        }
+
         &::before {
             content: "";
             position: absolute;
-            top: -12px;
-            left: -12px;
-            right: 12px;
-            bottom: 12px;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
             border: 2px solid var(--secondary-color);
             z-index: -1;
+
+            @media (max-width: 480px) {
+                top: -8px;
+                left: -8px;
+                right: 8px;
+                bottom: 8px;
+            }
         }
 
         img {
@@ -120,15 +98,6 @@
             &:hover {
                 filter: grayscale(0);
             }
-        }
-    }
-
-    @media (max-width: 480px) {
-        .image-frame::before {
-            top: -8px;
-            left: -8px;
-            right: 8px;
-            bottom: 8px;
         }
     }
 }

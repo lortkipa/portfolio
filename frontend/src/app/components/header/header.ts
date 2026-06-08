@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ThemeService } from '../../services/theme-service';
 
 @Component({
   standalone: true,
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header {}
+export class Header {
+  constructor(public themeService: ThemeService){}
+}

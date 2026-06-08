@@ -74,7 +74,34 @@ button {
     font-family: inherit;
 }
 
+.btn {
+    padding: 1rem 2rem;
+    font-weight: 700;
+    border: 1px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
 
+.btn-primary {
+    background: var(--primary-color);
+    color: #000;
+
+    &:hover {
+        background: transparent;
+        color: var(--primary-color);
+        box-shadow: var(--neon-shadow);
+    }
+}
+
+.btn-secondary {
+    color: var(--primary-color);
+
+    &:hover {
+        background: var(--primary-color);
+        color: #000;
+        box-shadow: var(--neon-shadow);
+    }
+}
 
 /* Services */
 .section-title {
@@ -82,10 +109,21 @@ button {
     margin-bottom: 4rem;
     position: relative;
     display: inline-block;
-}
+    line-height: 1.2;
 
-.section-title span {
-    color: var(--primary-color);
+    span {
+        color: var(--primary-color);
+    }
+
+    @media (max-width: 968px) {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 1.75rem;
+        margin-bottom: 2.5rem;
+    }
 }
 
 .services-grid {
@@ -138,13 +176,9 @@ button {
 
 .project-img-placeholder {
     height: 250px;
-    background: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #444;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -158,6 +192,7 @@ button {
 
 .tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 1.5rem;
 }
@@ -203,6 +238,7 @@ button {
     font-family: inherit;
     outline: none;
     transition: var(--transition);
+    resize: none;
 }
 
 .form-group input:focus,
@@ -221,11 +257,15 @@ button {
     display: flex;
     gap: 2rem;
     margin-top: 2rem;
-}
 
-.social-links a:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
+    a {
+        cursor: pointer;
+
+        &:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+    }
 }
 
 /* Footer */

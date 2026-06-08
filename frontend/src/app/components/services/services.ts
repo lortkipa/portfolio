@@ -3,12 +3,12 @@ import { ScrollAnimService } from '../../services/scroll-anim-service';
 
 @Component({
   standalone: true,
-  selector: 'app-hero',
+  selector: 'app-services',
   imports: [],
-  templateUrl: './hero.html',
-  styleUrl: './hero.scss',
+  templateUrl: './services.html',
+  styleUrl: './services.scss',
 })
-export class Hero {
+export class Services {
   constructor(private el: ElementRef, private scrollAnimService: ScrollAnimService) { }
 
   ngAfterViewInit() {

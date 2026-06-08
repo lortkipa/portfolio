@@ -1,0 +1,76 @@
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+
+            span {
+                color: var(--primary-color);
+                animation: blink 1s infinite;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+
+            @media (max-width: 768px) {
+                display: none;
+            }
+
+            a {
+                cursor: pointer;
+
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+
+        #theme-toggle {
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+
+            &:hover {
+                border-color: var(--primary-color);
+                box-shadow: var(--neon-shadow);
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .sun-icon {
+                display: none;
+
+                .sun-icon {
+                    display: block;
+                }
+
+                .moon-icon {
+                    display: none;
+                }
+            }
+        }
+    }
+}
